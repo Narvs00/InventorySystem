@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LeftJoin" targetNamespace="http://tempuri.org/LeftJoin.xsd" xmlns:mstns="http://tempuri.org/LeftJoin.xsd" xmlns="http://tempuri.org/LeftJoin.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="dbConStringEquipments" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbConStringEquipments (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.InventorySystem.Properties.Settings.GlobalReference.Default.dbConStringEquipments" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vGrid_deployDetailsTableAdapter" GeneratorDataComponentClassName="vGrid_deployDetailsTableAdapter" Name="vGrid_deployDetails" UserDataComponentName="vGrid_deployDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConStringEquipments (Settings)" DbObjectName="tryDB.dbo.vGrid_deployDetails" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, category, brand, specs, serial, remarks, dateDeploy, oldUser FROM dbo.vGrid_deployDetails</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="category" DataSetColumn="category" />
+              <Mapping SourceColumn="brand" DataSetColumn="brand" />
+              <Mapping SourceColumn="specs" DataSetColumn="specs" />
+              <Mapping SourceColumn="serial" DataSetColumn="serial" />
+              <Mapping SourceColumn="remarks" DataSetColumn="remarks" />
+              <Mapping SourceColumn="dateDeploy" DataSetColumn="dateDeploy" />
+              <Mapping SourceColumn="oldUser" DataSetColumn="oldUser" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vGrid_deployUserTableAdapter" GeneratorDataComponentClassName="vGrid_deployUserTableAdapter" Name="vGrid_deployUser" UserDataComponentName="vGrid_deployUserTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConStringEquipments (Settings)" DbObjectName="tryDB.dbo.vGrid_deployUser" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, fullName FROM dbo.vGrid_deployUser</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="fullName" DataSetColumn="fullName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vGrid_pulloutDetailsTableAdapter" GeneratorDataComponentClassName="vGrid_pulloutDetailsTableAdapter" Name="vGrid_pulloutDetails" UserDataComponentName="vGrid_pulloutDetailsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConStringEquipments (Settings)" DbObjectName="tryDB.dbo.vGrid_pulloutDetails" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, fullName, category, brand, specs, serial, remarks, datePullout FROM dbo.vGrid_pulloutDetails</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="fullName" DataSetColumn="fullName" />
+              <Mapping SourceColumn="category" DataSetColumn="category" />
+              <Mapping SourceColumn="brand" DataSetColumn="brand" />
+              <Mapping SourceColumn="specs" DataSetColumn="specs" />
+              <Mapping SourceColumn="serial" DataSetColumn="serial" />
+              <Mapping SourceColumn="remarks" DataSetColumn="remarks" />
+              <Mapping SourceColumn="datePullout" DataSetColumn="datePullout" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vGrid_pulloutUserTableAdapter" GeneratorDataComponentClassName="vGrid_pulloutUserTableAdapter" Name="vGrid_pulloutUser" UserDataComponentName="vGrid_pulloutUserTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConStringEquipments (Settings)" DbObjectName="tryDB.dbo.vGrid_pulloutUser" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, fullName FROM dbo.vGrid_pulloutUser</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="fullName" DataSetColumn="fullName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="LeftJoin" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="LeftJoin" msprop:Generator_UserDSName="LeftJoin">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vGrid_deployDetails" msprop:Generator_TableClassName="vGrid_deployDetailsDataTable" msprop:Generator_TableVarName="tablevGrid_deployDetails" msprop:Generator_TablePropName="vGrid_deployDetails" msprop:Generator_RowDeletingName="vGrid_deployDetailsRowDeleting" msprop:Generator_RowChangingName="vGrid_deployDetailsRowChanging" msprop:Generator_RowEvHandlerName="vGrid_deployDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="vGrid_deployDetailsRowDeleted" msprop:Generator_UserTableName="vGrid_deployDetails" msprop:Generator_RowChangedName="vGrid_deployDetailsRowChanged" msprop:Generator_RowEvArgName="vGrid_deployDetailsRowChangeEvent" msprop:Generator_RowClassName="vGrid_deployDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" msprop:Generator_UserColumnName="category">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="brand" msprop:Generator_ColumnVarNameInTable="columnbrand" msprop:Generator_ColumnPropNameInRow="brand" msprop:Generator_ColumnPropNameInTable="brandColumn" msprop:Generator_UserColumnName="brand" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="specs" msprop:Generator_ColumnVarNameInTable="columnspecs" msprop:Generator_ColumnPropNameInRow="specs" msprop:Generator_ColumnPropNameInTable="specsColumn" msprop:Generator_UserColumnName="specs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="serial" msprop:Generator_ColumnVarNameInTable="columnserial" msprop:Generator_ColumnPropNameInRow="serial" msprop:Generator_ColumnPropNameInTable="serialColumn" msprop:Generator_UserColumnName="serial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_UserColumnName="remarks" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="dateDeploy" msprop:Generator_ColumnVarNameInTable="columndateDeploy" msprop:Generator_ColumnPropNameInRow="dateDeploy" msprop:Generator_ColumnPropNameInTable="dateDeployColumn" msprop:Generator_UserColumnName="dateDeploy" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="oldUser" msprop:Generator_ColumnVarNameInTable="columnoldUser" msprop:Generator_ColumnPropNameInRow="oldUser" msprop:Generator_ColumnPropNameInTable="oldUserColumn" msprop:Generator_UserColumnName="oldUser" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vGrid_deployUser" msprop:Generator_TableClassName="vGrid_deployUserDataTable" msprop:Generator_TableVarName="tablevGrid_deployUser" msprop:Generator_TablePropName="vGrid_deployUser" msprop:Generator_RowDeletingName="vGrid_deployUserRowDeleting" msprop:Generator_RowChangingName="vGrid_deployUserRowChanging" msprop:Generator_RowEvHandlerName="vGrid_deployUserRowChangeEventHandler" msprop:Generator_RowDeletedName="vGrid_deployUserRowDeleted" msprop:Generator_UserTableName="vGrid_deployUser" msprop:Generator_RowChangedName="vGrid_deployUserRowChanged" msprop:Generator_RowEvArgName="vGrid_deployUserRowChangeEvent" msprop:Generator_RowClassName="vGrid_deployUserRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="fullName" msprop:Generator_ColumnVarNameInTable="columnfullName" msprop:Generator_ColumnPropNameInRow="fullName" msprop:Generator_ColumnPropNameInTable="fullNameColumn" msprop:Generator_UserColumnName="fullName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vGrid_pulloutDetails" msprop:Generator_TableClassName="vGrid_pulloutDetailsDataTable" msprop:Generator_TableVarName="tablevGrid_pulloutDetails" msprop:Generator_TablePropName="vGrid_pulloutDetails" msprop:Generator_RowDeletingName="vGrid_pulloutDetailsRowDeleting" msprop:Generator_RowChangingName="vGrid_pulloutDetailsRowChanging" msprop:Generator_RowEvHandlerName="vGrid_pulloutDetailsRowChangeEventHandler" msprop:Generator_RowDeletedName="vGrid_pulloutDetailsRowDeleted" msprop:Generator_UserTableName="vGrid_pulloutDetails" msprop:Generator_RowChangedName="vGrid_pulloutDetailsRowChanged" msprop:Generator_RowEvArgName="vGrid_pulloutDetailsRowChangeEvent" msprop:Generator_RowClassName="vGrid_pulloutDetailsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="fullName" msprop:Generator_ColumnVarNameInTable="columnfullName" msprop:Generator_ColumnPropNameInRow="fullName" msprop:Generator_ColumnPropNameInTable="fullNameColumn" msprop:Generator_UserColumnName="fullName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" msprop:Generator_UserColumnName="category">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="brand" msprop:Generator_ColumnVarNameInTable="columnbrand" msprop:Generator_ColumnPropNameInRow="brand" msprop:Generator_ColumnPropNameInTable="brandColumn" msprop:Generator_UserColumnName="brand" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="specs" msprop:Generator_ColumnVarNameInTable="columnspecs" msprop:Generator_ColumnPropNameInRow="specs" msprop:Generator_ColumnPropNameInTable="specsColumn" msprop:Generator_UserColumnName="specs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="serial" msprop:Generator_ColumnVarNameInTable="columnserial" msprop:Generator_ColumnPropNameInRow="serial" msprop:Generator_ColumnPropNameInTable="serialColumn" msprop:Generator_UserColumnName="serial" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="remarks" msprop:Generator_ColumnVarNameInTable="columnremarks" msprop:Generator_ColumnPropNameInRow="remarks" msprop:Generator_ColumnPropNameInTable="remarksColumn" msprop:Generator_UserColumnName="remarks" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="datePullout" msprop:Generator_ColumnVarNameInTable="columndatePullout" msprop:Generator_ColumnPropNameInRow="datePullout" msprop:Generator_ColumnPropNameInTable="datePulloutColumn" msprop:Generator_UserColumnName="datePullout" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vGrid_pulloutUser" msprop:Generator_TableClassName="vGrid_pulloutUserDataTable" msprop:Generator_TableVarName="tablevGrid_pulloutUser" msprop:Generator_TablePropName="vGrid_pulloutUser" msprop:Generator_RowDeletingName="vGrid_pulloutUserRowDeleting" msprop:Generator_RowChangingName="vGrid_pulloutUserRowChanging" msprop:Generator_RowEvHandlerName="vGrid_pulloutUserRowChangeEventHandler" msprop:Generator_RowDeletedName="vGrid_pulloutUserRowDeleted" msprop:Generator_UserTableName="vGrid_pulloutUser" msprop:Generator_RowChangedName="vGrid_pulloutUserRowChanged" msprop:Generator_RowEvArgName="vGrid_pulloutUserRowChangeEvent" msprop:Generator_RowClassName="vGrid_pulloutUserRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="fullName" msprop:Generator_ColumnVarNameInTable="columnfullName" msprop:Generator_ColumnPropNameInRow="fullName" msprop:Generator_ColumnPropNameInTable="fullNameColumn" msprop:Generator_UserColumnName="fullName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vGrid_deployDetails" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="vGrid_deployUser_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vGrid_deployUser" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="vGrid_pulloutDetails_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vGrid_pulloutDetails" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="vGrid_pulloutUser_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vGrid_pulloutUser" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
