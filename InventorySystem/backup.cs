@@ -83,15 +83,15 @@ namespace InventorySystem
                     Worksheet worksheet2 = workbook2.Sheets[2];
                     Worksheet worksheet3 = workbook3.Sheets[3];
                     Worksheet worksheet4 = workbook4.Sheets[4];
-                    Worksheet worksheet5 = workbook4.Sheets[5];
-                    Worksheet worksheet6 = workbook4.Sheets[4];
+                    Worksheet worksheet5 = workbook5.Sheets[5];
+                    Worksheet worksheet6 = workbook6.Sheets[6];
 
                     Range range = worksheet.UsedRange;
                     Range range2 = worksheet2.UsedRange;
                     Range range3 = worksheet3.UsedRange;
                     Range range4 = worksheet4.UsedRange;
-                    Range range5 = worksheet.UsedRange;
-                    Range range6 = worksheet.UsedRange;
+                    Range range5 = worksheet5.UsedRange;
+                    Range range6 = worksheet6.UsedRange;
 
 
 
@@ -115,6 +115,23 @@ namespace InventorySystem
                             cmdDeploy.ExecuteNonQuery();
                         }
                         connection.Close();
+
+                        //tbl_pulloutDetails
+                        connection.Open();
+                        for (int row6 = 2; row6 <= range6.Rows.Count; row6++)
+                        {
+                            string dateDeploy = ((Range)range6.Cells[row6, 2]).Value?.ToString() ?? "";
+                            string userID = ((Range)range6.Cells[row6, 3]).Value?.ToString() ?? "";
+                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+
+                            string qryDeploy = "INSERT INTO tbl_pulloutDetails (datePullout,userID) VALUES (@dateDeploy,@setID)";
+                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
+                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
+                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
+                            cmdDeploy.ExecuteNonQuery();
+                        }
+                        connection.Close();
+
 
                         //tbl_users
                         connection.Open();
@@ -268,11 +285,10 @@ namespace InventorySystem
                             checkCmd.Parameters.AddWithValue("@category", category);
                             int existingCount = (int)checkCmd.ExecuteScalar();
 
-                            if (existingCount > 0)
+                            if (existingCount < 1)
                             {
                                 connection.Close();
                                 connection.Open();
-                                // If fullName already exists, update the record
                                 string qrycategory = "INSERT INTO tbl_category (category) VALUES (@category)";
                                 SqlCommand cmdcategory = new SqlCommand(qrycategory, connection);
                                 cmdcategory.Parameters.AddWithValue("@category", category);
@@ -282,47 +298,8 @@ namespace InventorySystem
                             {
                                 connection.Close();
                                 connection.Open();
-                                string qrycategory = "INSERT INTO tbl_category (category) VALUES (@category)";
-                                SqlCommand cmdcategory = new SqlCommand(qrycategory, connection);
-                                cmdcategory.Parameters.AddWithValue("@category", category);
-                                cmdcategory.ExecuteNonQuery();
                             }
                         }
-                        connection.Close();
-
-                        //tbl_category
-                        connection.Open();
-                        for (int row5 = 2; row5 <= range5.Rows.Count; row5++)
-                        {
-                            string category = ((Range)range5.Cells[row5, 2]).Value?.ToString() ?? "";
-
-                                connection.Close();
-                                connection.Open();
-                                // If fullName already exists, update the record
-                                string qrycategory = "INSERT INTO tbl_category (category) VALUES (@category)";
-                                SqlCommand cmdcategory = new SqlCommand(qrycategory, connection);
-                                cmdcategory.Parameters.AddWithValue("@category", category);
-                                cmdcategory.ExecuteNonQuery();
-
-                        }
-                        connection.Close();
-
-                        //tbl_pulloutDetails
-                        connection.Open();
-                        for (int row6 = 2; row6 <= range6.Rows.Count; row6++)
-                        {
-                            string dateDeploy = ((Range)range6.Cells[row6, 2]).Value?.ToString() ?? "";
-                            string userID = ((Range)range6.Cells[row6, 3]).Value?.ToString() ?? "";
-                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
-
-                            string qryDeploy = "INSERT INTO tbl_pulloutDetails (dateDeploy,setID) VALUES (@dateDeploy,@setID)";
-                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
-                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
-                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
-                            cmdDeploy.ExecuteNonQuery();
-                        }
-                        connection.Close();
-
                         connection.Close();
                         MessageBox.Show("SULIT! Data Imported Successfully!");
                     }
