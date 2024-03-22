@@ -172,7 +172,7 @@ namespace InventorySystem
             btnDelete.ForeColor = Color.Black;
 
             con.Open();
-            string qry = "SELECT category FROM tbl_category"; // Change YourTable to the actual table name
+            string qry = "SELECT category FROM tbl_category ORDER BY category ASC"; // Change YourTable to the actual table name
             SqlCommand command = new SqlCommand(qry, con);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -189,7 +189,7 @@ namespace InventorySystem
 
             
             con.Open();
-            string qrycbStatus = "SELECT statusName FROM tbl_status"; // Change YourTable to the actual table name
+            string qrycbStatus = "SELECT statusName FROM tbl_status ORDER BY statusName ASC"; // Change YourTable to the actual table name
             SqlCommand commandcbStatus = new SqlCommand(qrycbStatus, con);
             SqlDataReader readercbStatus = commandcbStatus.ExecuteReader();
 
@@ -373,20 +373,6 @@ namespace InventorySystem
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                //DataGridViewRow selectedRowgetID = dataGridView1.SelectedRows[0];
-                //id = selectedRowgetID.Cells[0].Value.ToString();
-
-                //con.Open();
-                //string qryselectAction = "SELECT action from tbl_assets where id = @id";
-                //SqlCommand cmdaction = new SqlCommand(qryselectAction, con);
-                //cmdaction.Parameters.AddWithValue("@id", id);
-                //SqlDataReader sdraction = cmdaction.ExecuteReader();
-
-                //sdraction.Read();
-                //int action = (int)sdraction["action"];
-                //sdraction.Close();
-                //con.Close();
-
                 con.Open();
                 string qryselectRow = "SELECT * from tbl_assets where action = @action";
                 SqlCommand cmdselectRow = new SqlCommand(qryselectRow, con);

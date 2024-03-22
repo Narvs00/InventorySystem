@@ -24,16 +24,30 @@ namespace InventorySystem
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            string status = cbStatus.SelectedItem.ToString();
-            string statusName = txtStatusName.Text;
+            if (cbStatus != null && txtStatusName.Text != "")
+            {
 
-            con.Open();
-            string qry = "INSERT INTO tbl_status (status, statusName) VALUES (@status,@statusName)";
-            SqlCommand cmd = new SqlCommand(qry, con);
-            cmd.Parameters.AddWithValue("@status", status);
-            cmd.Parameters.AddWithValue("@statusName", statusName);
-            cmd.ExecuteNonQuery();
-            con.Close();
+                string status = cbStatus.SelectedItem.ToString();
+                string statusName = txtStatusName.Text;
+
+                con.Open();
+                string qry = "INSERT INTO tbl_status (status, statusName) VALUES (@status,@statusName)";
+                SqlCommand cmd = new SqlCommand(qry, con);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@statusName", statusName);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                cbStatus = null;
+                txtStatusName.Clear();
+
+                MessageBox.Show("Sulit! Status added successfully");
+                
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input!");
+            }
         }
     }
 }

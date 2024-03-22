@@ -102,45 +102,7 @@ namespace InventorySystem
                     // SQL Connection
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        string globalstatus = null;
-
-                        //tbl_status
-                        connection.Open();
-                        for (int row7 = 2; row7 <= range7.Rows.Count; row7++)
-                        {
-                            //// Check if the fullName already exists
-                            //string qrygetStatus = "SELECT status FROM tbl_assets WHERE status = @status";
-                            //SqlCommand cmdgetStatus = new SqlCommand(qrygetStatus, connection);
-                            ////cmdgetStatus.Parameters.AddWithValue("@status", status);
-                            
-
-                            string status = ((Range)range7.Cells[row7, 2]).Value?.ToString() ?? "";
-                            string statusName = ((Range)range7.Cells[row7, 3]).Value?.ToString() ?? "";
-                            globalstatus = status;
-
-                            // Check if the fullName already exists
-                            string checkQuerystatus = "SELECT * FROM tbl_status WHERE statusName = @statusName";
-                            SqlCommand checkCmdstatus = new SqlCommand(checkQuerystatus, connection);
-                            checkCmdstatus.Parameters.AddWithValue("@statusName", statusName);
-                            int existingCountstatus = (int)checkCmdstatus.ExecuteScalar();
-
-                            if (existingCountstatus < 1)
-                            {
-                                connection.Close();
-                                connection.Open();
-                                string qrystatus = "INSERT INTO tbl_status (status,statusName) VALUES (@status, @statusName)";
-                                SqlCommand cmdstatus = new SqlCommand(qrystatus, connection);
-                                cmdstatus.Parameters.AddWithValue("@status", status);
-                                cmdstatus.Parameters.AddWithValue("@statusName", statusName);
-                                cmdstatus.ExecuteNonQuery();
-                            }
-                            else
-                            {
-                                connection.Close();
-                                connection.Open();
-                            }
-                        }
-                        connection.Close();
+                        
                         
                         //tblDeployDetails
                         connection.Open();
@@ -214,100 +176,212 @@ namespace InventorySystem
                         }
                         connection.Close();
 
-                        //tbl_assets
-                        
-                        // Loop through Excel data and insert into SQL Server
-                        for (int row = 2; row <= range.Rows.Count; row++)
+                        //tbl_status
+                        string globalstatus = null;
+                        connection.Open();
+                        for (int row7 = 2; row7 <= range7.Rows.Count; row7++)
                         {
-                            con.Open();
-                            string qrygetstatusName = "SELECT id from tbl_status where status = @status";
-                            SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
-                            cmdstatusName.Parameters.AddWithValue("@status", globalstatus);
-                            SqlDataReader checker = cmdstatusName.ExecuteReader();
+                            string status = ((Range)range7.Cells[row7, 2]).Value?.ToString() ?? "";
+                            string statusName = ((Range)range7.Cells[row7, 3]).Value?.ToString() ?? "";
+                            globalstatus = status;
 
-                            int globalstatusID = 0;
-                            while (checker.Read())
+                            // Check if the fullName already exists
+                            string checkQuerystatus = "SELECT * FROM tbl_status WHERE statusName = @statusName";
+                            SqlCommand checkCmdstatus = new SqlCommand(checkQuerystatus, connection);
+                            checkCmdstatus.Parameters.AddWithValue("@statusName", statusName);
+                            SqlDataReader existingCountstatus = checkCmdstatus.ExecuteReader();
+
+                            if (existingCountstatus.HasRows)
                             {
-                                int statusID1 = (int)checker["id"];
-                                globalstatusID = statusID1;
-                            }
-                            checker.Close();
-                            con.Close();
-
-
-                            // Assuming the first column contains the data to be inserted
-
-                            string stringID = ((Range)range.Cells[row, 1]).Value?.ToString(); // Using ?. to handle null
-                            int id = string.IsNullOrEmpty(stringID) ? 0 : Convert.ToInt32(stringID); // Default to 0 if null or empty
-
-                            string cat = ((Range)range.Cells[row, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
-                            string brand = ((Range)range.Cells[row, 3]).Value?.ToString() ?? "";
-                            string specs = ((Range)range.Cells[row, 4]).Value?.ToString() ?? "";
-                            string serial = ((Range)range.Cells[row, 5]).Value?.ToString() ?? "";
-                            string status = ((Range)range.Cells[row, 6]).Value?.ToString() ?? "";
-                            string remarks = ((Range)range.Cells[row, 7]).Value?.ToString() ?? "";
-                            string action = ((Range)range.Cells[row, 9]).Value?.ToString() ?? "";
-
-                            string deployID = ((Range)range.Cells[row, 10]).Value?.ToString() ?? "";
-                            int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
-
-                            string userID = ((Range)range.Cells[row, 11]).Value?.ToString() ?? "";
-                            int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
-
-                            string pullOutID = ((Range)range.Cells[row, 12]).Value?.ToString() ?? "";
-                            int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
-
-                            string statusID = ((Range)range.Cells[row, 14]).Value?.ToString() ?? "";
-                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
-
-                            string oldUser = ((Range)range.Cells[row, 13]).Value?.ToString() ?? "";
-
-                            connection.Open();
-                            if (deployID == "" && userID == "")
-                            {
+                                con.Close();
+                                //tbl_assets
+                                // Loop through Excel data and insert into SQL Server
                                
-                                // SQL Insert command
-                                string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
-                                SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
-                                commanddeploID.Parameters.AddWithValue("@cat", cat);
-                                commanddeploID.Parameters.AddWithValue("@brand", brand);
-                                commanddeploID.Parameters.AddWithValue("@specs", specs);
-                                commanddeploID.Parameters.AddWithValue("@serial", serial);
-                                commanddeploID.Parameters.AddWithValue("@status", status);
-                                commanddeploID.Parameters.AddWithValue("@remarks", remarks);
-                                commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
-                                commanddeploID.Parameters.AddWithValue("@action", action);
-                                commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
-                                commanddeploID.Parameters.AddWithValue("@statusID", globalstatusID);
-                                commanddeploID.ExecuteNonQuery();
-                                
+                                    
+                                    con.Open();
+                                    string qrygetstatusName = "SELECT id from tbl_status where status = @status";
+                                    SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
+                                    cmdstatusName.Parameters.AddWithValue("@status", globalstatus);
+
+                                    SqlDataReader checker = cmdstatusName.ExecuteReader();
+
+                                    checker.Read();
+                                        
+                                            
+                                            //int globalstatusID = 1;
+                                            int statusID1 = (int)checker["id"];
+                                            checker.Close();
+                                            con.Close();
+
+                                    // Assuming the first column contains the data to be inserted
+                                            string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
+                                            string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
+                                            string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
+                                            string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
+                                            string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
+                                            string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
+                                            string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
+
+                                            string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
+                                            int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
+
+                                            string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
+                                            int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+
+                                            string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
+                                            int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
+
+                                            string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
+                                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+
+                                            string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
+
+                                            connection.Close();
+                                            connection.Open();
+                                            if (deployID == "" && userID == "")
+                                            {
+                                                // SQL Insert command
+                                                string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
+                                                SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
+                                                commanddeploID.Parameters.AddWithValue("@cat", cat);
+                                                commanddeploID.Parameters.AddWithValue("@brand", brand);
+                                                commanddeploID.Parameters.AddWithValue("@specs", specs);
+                                                commanddeploID.Parameters.AddWithValue("@serial", serial);
+                                                commanddeploID.Parameters.AddWithValue("@status", statusexcel);
+                                                commanddeploID.Parameters.AddWithValue("@remarks", remarks);
+                                                commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
+                                                commanddeploID.Parameters.AddWithValue("@action", action);
+                                                commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                                commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
+                                                commanddeploID.ExecuteNonQuery();
+                                            }
+                                            else
+                                            {
+                                                // SQL Insert command
+                                                string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
+                                                SqlCommand command = new SqlCommand(insertCommand, connection);
+                                                command.Parameters.AddWithValue("@cat", cat);
+                                                command.Parameters.AddWithValue("@brand", brand);
+                                                command.Parameters.AddWithValue("@specs", specs);
+                                                command.Parameters.AddWithValue("@serial", serial);
+                                                command.Parameters.AddWithValue("@status", status);
+                                                command.Parameters.AddWithValue("@remarks", remarks);
+                                                command.Parameters.AddWithValue("@date", dateTime);
+                                                command.Parameters.AddWithValue("@action", action);
+                                                command.Parameters.AddWithValue("@deployID", deployid);
+                                                command.Parameters.AddWithValue("@userID", userid);
+                                                command.Parameters.AddWithValue("@pullOutID", pulloutid);
+                                                command.Parameters.AddWithValue("@oldUser", oldUser);
+                                                command.Parameters.AddWithValue("@statusID", statusID1);
+                                                command.ExecuteNonQuery();
+
+                                            }
+                                            connection.Close();
                             }
                             else
                             {
-                                // SQL Insert command
-                                string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
-                                SqlCommand command = new SqlCommand(insertCommand, connection);
-                                command.Parameters.AddWithValue("@cat", cat);
-                                command.Parameters.AddWithValue("@brand", brand);
-                                command.Parameters.AddWithValue("@specs", specs);
-                                command.Parameters.AddWithValue("@serial", serial);
-                                command.Parameters.AddWithValue("@status", status);
-                                command.Parameters.AddWithValue("@remarks", remarks);
-                                command.Parameters.AddWithValue("@date", dateTime);
-                                command.Parameters.AddWithValue("@action", action);
-                                command.Parameters.AddWithValue("@deployID", deployid);
-                                command.Parameters.AddWithValue("@userID", userid);
-                                command.Parameters.AddWithValue("@pullOutID", pulloutid);
-                                command.Parameters.AddWithValue("@oldUser", oldUser);
-                                command.Parameters.AddWithValue("@statusID", globalstatusID);
-                                command.ExecuteNonQuery();
+                                connection.Close();
+                                connection.Open();
+                                string qrystatus = "INSERT INTO tbl_status (status,statusName) VALUES (@status, @statusName)";
+                                SqlCommand cmdstatus = new SqlCommand(qrystatus, connection);
+                                cmdstatus.Parameters.AddWithValue("@status", status);
+                                cmdstatus.Parameters.AddWithValue("@statusName", statusName);
+                                cmdstatus.ExecuteNonQuery();
+                                connection.Close();
+
+                                //tbl_assets
+                                // Loop through Excel data and insert into SQL Server
+                                
+                                    con.Open();
+                                    string qrygetstatusName = "SELECT id from tbl_status where status = @status";
+                                    SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
+                                    cmdstatusName.Parameters.AddWithValue("@status", globalstatus);
+
+                                    using (SqlDataReader checker = cmdstatusName.ExecuteReader())
+                                    {
+                                    checker.Read();
+                                        
+                                            
+                                            //int globalstatusID = 1;
+                                            int statusID1 = (int)checker["id"];
+                                            checker.Close();
+                                            con.Close();
+
+                                            // Assuming the first column contains the data to be inserted
+                                            string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
+                                            string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
+                                            string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
+                                            string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
+                                            string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
+                                            string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
+                                            string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
+
+                                            string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
+                                            int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
+
+                                            string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
+                                            int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+
+                                            string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
+                                            int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
+
+                                            string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
+                                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+
+                                            string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
+
+                                            connection.Close();
+                                            connection.Open();
+                                            if (deployID == "" && userID == "")
+                                            {
+                                                // SQL Insert command
+                                                string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
+                                                SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
+                                                commanddeploID.Parameters.AddWithValue("@cat", cat);
+                                                commanddeploID.Parameters.AddWithValue("@brand", brand);
+                                                commanddeploID.Parameters.AddWithValue("@specs", specs);
+                                                commanddeploID.Parameters.AddWithValue("@serial", serial);
+                                                commanddeploID.Parameters.AddWithValue("@status", statusexcel);
+                                                commanddeploID.Parameters.AddWithValue("@remarks", remarks);
+                                                commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
+                                                commanddeploID.Parameters.AddWithValue("@action", action);
+                                                commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                                commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
+                                                commanddeploID.ExecuteNonQuery();
+                                            }
+                                            else
+                                            {
+                                                // SQL Insert command
+                                                string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
+                                                SqlCommand command = new SqlCommand(insertCommand, connection);
+                                                command.Parameters.AddWithValue("@cat", cat);
+                                                command.Parameters.AddWithValue("@brand", brand);
+                                                command.Parameters.AddWithValue("@specs", specs);
+                                                command.Parameters.AddWithValue("@serial", serial);
+                                                command.Parameters.AddWithValue("@status", status);
+                                                command.Parameters.AddWithValue("@remarks", remarks);
+                                                command.Parameters.AddWithValue("@date", dateTime);
+                                                command.Parameters.AddWithValue("@action", action);
+                                                command.Parameters.AddWithValue("@deployID", deployid);
+                                                command.Parameters.AddWithValue("@userID", userid);
+                                                command.Parameters.AddWithValue("@pullOutID", pulloutid);
+                                                command.Parameters.AddWithValue("@oldUser", oldUser);
+                                                command.Parameters.AddWithValue("@statusID", statusID1);
+                                                command.ExecuteNonQuery();
+
+                                            }
+                                            connection.Close();
+                                           
+                                }
                                 
                             }
-                            connection.Close();
+                            connection.Open();
                         }
-                       
+                        connection.Close();
 
                         //tbl_archive
                         connection.Open();
@@ -543,6 +617,72 @@ namespace InventorySystem
             con.Close();
             MessageBox.Show($"SULIT! Data exported to Excel successfully! \nLocation: {filePath}");
 
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure, you want to Reset?", "Warning Message", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    //tbl_assets
+                    con.Open();
+                    SqlCommand cmdassets = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_assets'", con);
+                    cmdassets.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_deployDetails
+                    con.Open();
+                    SqlCommand cmddeployDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_deployDetails'", con);
+                    cmddeployDetails.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_archive
+                    con.Open();
+                    SqlCommand cmdarchive = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_archive'", con);
+                    cmdarchive.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_category
+                    con.Open();
+                    SqlCommand cmdcategory = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_category'", con);
+                    cmdcategory.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_pulloutDetails
+                    con.Open();
+                    SqlCommand cmdpulloutDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_pulloutDetails'", con);
+                    cmdpulloutDetails.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_status
+                    con.Open();
+                    SqlCommand cmdstatus = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_status'", con);
+                    cmdstatus.ExecuteNonQuery();
+                    con.Close();
+
+                    //tbl_users
+                    con.Open();
+                    SqlCommand cmdusers = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_users'", con);
+                    cmdusers.ExecuteNonQuery();
+
+                    MessageBox.Show("Database cleared successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+
+            }
         }
     }
 }
