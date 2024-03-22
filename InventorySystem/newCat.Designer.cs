@@ -40,9 +40,9 @@ namespace InventorySystem
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-217, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(-167, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(829, 221);
+            this.pictureBox1.Size = new System.Drawing.Size(698, 221);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -67,7 +67,7 @@ namespace InventorySystem
             // btnAddCategory
             // 
             this.btnAddCategory.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCategory.Location = new System.Drawing.Point(301, 253);
+            this.btnAddCategory.Location = new System.Drawing.Point(281, 253);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(67, 33);
             this.btnAddCategory.TabIndex = 18;
@@ -79,7 +79,7 @@ namespace InventorySystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 320);
+            this.ClientSize = new System.Drawing.Size(360, 320);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtNewCat);
             this.Controls.Add(this.btnAddCategory);

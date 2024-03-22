@@ -39,18 +39,20 @@ namespace InventorySystem
 
         private void dashboardMain_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dbset35.vGrid_finalDeployViewDetails' table. You can move, or remove it, as needed.
-            this.vGrid_finalDeployViewDetailsTableAdapter.Fill(this.dbset35.vGrid_finalDeployViewDetails);
-            // TODO: This line of code loads data into the 'dbset24.vGrid_ViewDetails' table. You can move, or remove it, as needed.
-            this.vGrid_ViewDetailsTableAdapter1.Fill(this.dbset24.vGrid_ViewDetails);
-            // TODO: This line of code loads data into the 'dbset22.vGrid_ViewDetails' table. You can move, or remove it, as needed.
-            this.vGrid_ViewDetailsTableAdapter.Fill(this.dbset22.vGrid_ViewDetails);
-            // TODO: This line of code loads data into the 'dbset16.vGrid_deployDetails' table. You can move, or remove it, as needed.
-            this.vGrid_deployDetailsTableAdapter7.Fill(this.dbset16.vGrid_deployDetails);
-            // TODO: This line of code loads data into the 'dbset13.vGrid_deployDetails' table. You can move, or remove it, as needed.
-            this.vGrid_deployDetailsTableAdapter6.Fill(this.dbset13.vGrid_deployDetails);
-            // TODO: This line of code loads data into the 'dbset13.tbl_assets' table. You can move, or remove it, as needed.
-            this.tbl_assetsTableAdapter6.Fill(this.dbset13.tbl_assets);
+            // TODO: This line of code loads data into the 'dbset46.tbl_users' table. You can move, or remove it, as needed.
+            this.tbl_usersTableAdapter.Fill(this.dbset46.tbl_users);
+            // TODO: This line of code loads data into the 'dbset46.vGrid_assets' table. You can move, or remove it, as needed.
+            this.vGrid_assetsTableAdapter2.Fill(this.dbset46.vGrid_assets);
+            // TODO: This line of code loads data into the 'dbset45.tbl_assets' table. You can move, or remove it, as needed.
+            this.tbl_assetsTableAdapter1.Fill(this.dbset45.tbl_assets);
+            // TODO: This line of code loads data into the 'dbset45.vGrid_assets' table. You can move, or remove it, as needed.
+            this.vGrid_assetsTableAdapter1.Fill(this.dbset45.vGrid_assets);
+            // TODO: This line of code loads data into the 'dbset44.vGrid_assets' table. You can move, or remove it, as needed.
+            this.vGrid_assetsTableAdapter.Fill(this.dbset44.vGrid_assets);
+            //color = navy blue CVM = Color.FromArgb(19, 73, 119);
+            //(8, 71, 124); up
+            //color = yellow CVM = Color.FromArgb(252, 219, 4);
+
 
             tipAssetsSearch.SetToolTip(btnAssetsSearch, "Search/Clear");
 
@@ -59,8 +61,6 @@ namespace InventorySystem
 
 
             //Inventory
-
-            refreshGrid();
             con.Open();
             string qry = "SELECT category FROM tbl_category"; // Change YourTable to the actual table name
             SqlCommand command = new SqlCommand(qry, con);
@@ -74,9 +74,8 @@ namespace InventorySystem
             }
             reader.Close();
             con.Close();
-
-
-
+            refreshGrid();
+            
             cbCategory.Enabled = false;
             txtBrand.Enabled = false;
             txtSpecs.Enabled = false;
@@ -104,7 +103,7 @@ namespace InventorySystem
 
             //DeploymedgvAssets
             con.Open();
-            string qryAssets = "SELECT id,category,brand,specs,serial,remarks,oldUser from vGrid_deployDetails where status = 'Working' AND action = 0 OR action = 2";
+            string qryAssets = "SELECT id,category,brand,specs,serial,statusName,remarks,oldUser from vGrid_assets where status = 'Working' AND action = 0 OR action = 2";
             SqlCommand cmdAssets = new SqlCommand(qryAssets, con);
             cmdAssets.CommandText = qryAssets;
 
@@ -135,6 +134,21 @@ namespace InventorySystem
             tabViewDeployment.Hide();
             tabPullout.Hide();
             refreshDashboard();
+            disabler();
+            clear();
+
+            //reset btn on inventory
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+
+            btnAdd.BackColor = Color.White;
+            btnEdit.BackColor = Color.White;
+            btnDelete.BackColor = Color.White;
+
+            btnAdd.ForeColor = Color.Black;
+            btnEdit.ForeColor = Color.Black;
+            btnDelete.ForeColor = Color.Black;
         }
 
         private void btnInventory_Click(object sender, EventArgs e)
@@ -143,11 +157,51 @@ namespace InventorySystem
             gbDashboard.Hide();
             tabViewDeployment.Hide();
             tabPullout.Hide();
-            con.Open();
 
+            //reset btn animation on inventory
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+
+            btnAdd.BackColor = Color.White;
+            btnEdit.BackColor = Color.White;
+            btnDelete.BackColor = Color.White;
+
+            btnAdd.ForeColor = Color.Black;
+            btnEdit.ForeColor = Color.Black;
+            btnDelete.ForeColor = Color.Black;
+
+            con.Open();
             string qry = "SELECT category FROM tbl_category"; // Change YourTable to the actual table name
             SqlCommand command = new SqlCommand(qry, con);
-            command.ExecuteNonQuery();
+            SqlDataReader reader = command.ExecuteReader();
+
+            cbCategory.Items.Clear();
+
+            while (reader.Read())
+            {
+                string category = reader["category"].ToString(); // Change "Name" to the actual column name in your table
+                cbCategory.Items.Add(category);
+                cbCategory.DisplayMember = "category";
+            }
+            reader.Close();
+            con.Close();
+
+            
+            con.Open();
+            string qrycbStatus = "SELECT statusName FROM tbl_status"; // Change YourTable to the actual table name
+            SqlCommand commandcbStatus = new SqlCommand(qrycbStatus, con);
+            SqlDataReader readercbStatus = commandcbStatus.ExecuteReader();
+
+            cbStatus.Items.Clear();
+
+            while (readercbStatus.Read())
+            {
+                string status = readercbStatus["statusName"].ToString(); // Change "Name" to the actual column name in your table
+                cbStatus.Items.Add(status);
+                cbStatus.DisplayMember = "statusName";
+            }
+            readercbStatus.Close();
             con.Close();
 
             refreshDGVassets();
@@ -173,15 +227,15 @@ namespace InventorySystem
             enabler();
             btnEdit.Enabled = false;
             btnDelete.Enabled = false;
-            btnAdd.BackColor = Color.Yellow;
-            btnAdd.ForeColor = Color.Navy;
+            btnAdd.BackColor = Color.FromArgb(252, 219, 4);
+            btnAdd.ForeColor = Color.FromArgb(8, 71, 124); 
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string searchText = txtSearch.Text;
             con.Open();
-            string qry1 = "SELECT * FROM tbl_assets WHERE category LIKE @searchText OR brand LIKE @searchText OR specs LIKE @searchText OR serial LIKE @searchText OR status LIKE @searchText";
+            string qry1 = "SELECT * FROM vGrid_assets WHERE id LIKE @searchText OR category LIKE @searchText OR brand LIKE @searchText OR specs LIKE @searchText OR serial LIKE @searchText OR statusName LIKE @searchText";
 
             using (SqlCommand cmd = new SqlCommand(qry1, con))
             {
@@ -228,9 +282,25 @@ namespace InventorySystem
             gbDashboard.Hide();
             tabPullout.Hide();
             refreshCatListofNames();
+            disabler();
+            clear();
+
+
+            //reset btn on inventory
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+
+            btnAdd.BackColor = Color.White;
+            btnEdit.BackColor = Color.White;
+            btnDelete.BackColor = Color.White;
+
+            btnAdd.ForeColor = Color.Black;
+            btnEdit.ForeColor = Color.Black;
+            btnDelete.ForeColor = Color.Black;
 
             con.Open();
-            string qryAssets = "SELECT id,category,brand,specs,serial,remarks,oldUser from vGrid_deployDetails where status = 'Working' AND action = 0 OR action = 2";
+            string qryAssets = "SELECT id,category,brand,specs,serial,statusName,remarks,oldUser from vGrid_assets where status = 'Working' AND action = 0 OR action = 2";
             SqlCommand cmdAssets = new SqlCommand(qryAssets, con);
             cmdAssets.CommandText = qryAssets;
 
@@ -272,8 +342,8 @@ namespace InventorySystem
             btnAdd.Enabled = false;
             btnDelete.Enabled = false;
 
-            btnEdit.BackColor = Color.Yellow;
-            btnEdit.ForeColor = Color.Navy;
+            btnEdit.BackColor = Color.FromArgb(252, 219, 4);
+            btnEdit.ForeColor = Color.FromArgb(8, 71, 124);
 
             setEdit = "edit";
 
@@ -298,22 +368,58 @@ namespace InventorySystem
             btnAdd.Enabled = false;
             btnEdit.Enabled = false;
 
-            btnDelete.BackColor = Color.Yellow;
-            btnDelete.ForeColor = Color.Navy;
+            btnDelete.BackColor = Color.FromArgb(252, 219, 4);
+            btnDelete.ForeColor = Color.FromArgb(8, 71, 124);
 
-            setDelete = "delete";
-
-            DialogResult dialogResult = MessageBox.Show("Are you sure, you want to Delete?", "Warning Message", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if (dataGridView1.SelectedRows.Count > 0)
             {
-                setDelete = "delete";
+                //DataGridViewRow selectedRowgetID = dataGridView1.SelectedRows[0];
+                //id = selectedRowgetID.Cells[0].Value.ToString();
+
+                //con.Open();
+                //string qryselectAction = "SELECT action from tbl_assets where id = @id";
+                //SqlCommand cmdaction = new SqlCommand(qryselectAction, con);
+                //cmdaction.Parameters.AddWithValue("@id", id);
+                //SqlDataReader sdraction = cmdaction.ExecuteReader();
+
+                //sdraction.Read();
+                //int action = (int)sdraction["action"];
+                //sdraction.Close();
+                //con.Close();
+
+                con.Open();
+                string qryselectRow = "SELECT * from tbl_assets where action = @action";
+                SqlCommand cmdselectRow = new SqlCommand(qryselectRow, con);
+                cmdselectRow.Parameters.AddWithValue("action", 1);
+                SqlDataReader checkerAction = cmdselectRow.ExecuteReader();
+                
+
+                checkerAction.Read();
+                if (checkerAction.HasRows)
+                {
+                    MessageBox.Show("Selected asset is currently deployed!");
+                }
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("Are you sure, you want to Delete?", "Warning Message", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        setDelete = "delete";
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        //do something else
+                        
+                    }
+                }
+                checkerAction.Close();
+                con.Close();
             }
-            else if (dialogResult == DialogResult.No)
+            else
             {
-                //do something else
+                MessageBox.Show("Please select a row.");
             }
         }
-
         private void btnDone_Click(object sender, EventArgs e)
         {
             btnAdd.Enabled = true;
@@ -332,47 +438,68 @@ namespace InventorySystem
             if (setAdd == "add")
             {
 
-
                 if (cbCategory.SelectedItem != null && cbStatus.SelectedItem != null)
                 {
-                    con.Open();
                     string selectedCat = cbCategory.SelectedItem.ToString();
                     string selectedStatus = cbStatus.SelectedItem.ToString();
-                    string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                    string qry = "INSERT INTO tbl_assets(category,brand,specs,serial,status,remarks,date,action) VALUES (@category,@brand,@specs,@serialNo,@status,@remarks,@dateIn,@action)";
-                    SqlCommand cmd = new SqlCommand(qry, con);
 
+                    con.Open();
+                    string qrygetstatusID = "Select * from tbl_status where statusName = @statusName";
+                    SqlCommand cmdgetstatusID = new SqlCommand(qrygetstatusID, con);
+                    cmdgetstatusID.Parameters.AddWithValue("statusName", selectedStatus);
+                    SqlDataReader sdrstatusID = cmdgetstatusID.ExecuteReader();
 
-                    cmd.Parameters.AddWithValue("@category", selectedCat);
-                    cmd.Parameters.AddWithValue("@brand", txtBrand.Text);
-                    cmd.Parameters.AddWithValue("@specs", txtSpecs.Text);
-                    cmd.Parameters.AddWithValue("@serialNo", txtSerial.Text);
-                    cmd.Parameters.AddWithValue("@status", selectedStatus);
-                    cmd.Parameters.AddWithValue("@remarks", rRemarks.Text);
-                    cmd.Parameters.AddWithValue("@dateIn", dateTime);
-                    cmd.Parameters.AddWithValue("@action", 0);
-
-                    int rowsAffected = cmd.ExecuteNonQuery();
-
-                    if (rowsAffected > 0)
+                    int statusid1 = 0;
+                    string statusMain1 = null;
+                    while (sdrstatusID.Read())
                     {
-                        MessageBox.Show("Added successful!");
-                        con.Close();
-                        refreshGrid();
-                        refreshViewDeploy();
-                        refreshDGVassets();
+                        int statusID = (int)sdrstatusID["id"];
+                        string statusMain = (string)sdrstatusID["status"];
 
-                        disabler();
-                        setAdd = "";
-                        clear();
+                        statusid1 = statusID;
+                        statusMain1 = statusMain;
                     }
-                    else
-                    {
-                        MessageBox.Show("Adding failed.");
-                    }
+                    sdrstatusID.Close();
                     con.Close();
 
-                }
+                    con.Open();
+
+                        string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                        string qry = "INSERT INTO tbl_assets(category,brand,specs,serial,status,remarks,date,action,statusID) VALUES (@category,@brand,@specs,@serialNo,@status,@remarks,@dateIn,@action,@statusID)";
+                        SqlCommand cmd = new SqlCommand(qry, con);
+
+
+                        cmd.Parameters.AddWithValue("@category", selectedCat);
+                        cmd.Parameters.AddWithValue("@brand", txtBrand.Text);
+                        cmd.Parameters.AddWithValue("@specs", txtSpecs.Text);
+                        cmd.Parameters.AddWithValue("@serialNo", txtSerial.Text);
+                        cmd.Parameters.AddWithValue("@status", statusMain1);
+                        cmd.Parameters.AddWithValue("@remarks", rRemarks.Text);
+                        cmd.Parameters.AddWithValue("@dateIn", dateTime);
+                        cmd.Parameters.AddWithValue("@action", 0);
+                        cmd.Parameters.AddWithValue("@statusID", statusid1);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Added successful!");
+                            con.Close();
+                            refreshGrid();
+                            refreshViewDeploy();
+                            refreshDGVassets();
+
+                            disabler();
+                            setAdd = "";
+                            clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Adding failed.");
+                        }
+                        con.Close();
+                    }
+
                 else
                 {
                     disabler();
@@ -380,9 +507,11 @@ namespace InventorySystem
                     btnEdit.Enabled = true;
                     btnDelete.Enabled = true;
                     MessageBox.Show("Please fill up the form");
+                    con.Close();
                 }
                 clear();
             }
+
 
             if (setEdit == "edit")
             {
@@ -414,11 +543,6 @@ namespace InventorySystem
                     refreshDGVassets();
                     clear();
                 }
-                else
-                {
-                    MessageBox.Show("Please fill up all fields");
-                    con.Close();
-                }
             }
 
             if (setDelete == "delete")
@@ -427,12 +551,12 @@ namespace InventorySystem
                 {
                     DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
                     id = selectedRow.Cells[0].Value.ToString();
-                    cat = selectedRow.Cells[2].Value.ToString();
-                    brand = selectedRow.Cells[3].Value.ToString();
-                    specs = selectedRow.Cells[4].Value.ToString();
-                    serial = selectedRow.Cells[5].Value.ToString();
-                    status = selectedRow.Cells[6].Value.ToString();
-                    remarks = selectedRow.Cells[7].Value.ToString();
+                    cat = selectedRow.Cells[1].Value.ToString();
+                    brand = selectedRow.Cells[2].Value.ToString();
+                    specs = selectedRow.Cells[3].Value.ToString();
+                    serial = selectedRow.Cells[4].Value.ToString();
+                    status = selectedRow.Cells[5].Value.ToString();
+                    remarks = selectedRow.Cells[6].Value.ToString();
 
                     con.Open();
                     string dateTime = DateTime.Now.ToString("MM / dd / yyyy");
@@ -531,7 +655,7 @@ namespace InventorySystem
         public void refreshGrid()
         {
             con.Open();
-            string qry = "SELECT * from tbl_assets";
+            string qry = "SELECT id,category,brand,specs,serial,statusName,remarks,date from vGrid_assets";
             SqlCommand cmd = new SqlCommand(qry, con);
             cmd.CommandText = qry;
 
@@ -560,7 +684,7 @@ namespace InventorySystem
         public void refreshGridDeploy()
         {
             con.Open();
-            string qry = "SELECT * from tbl_users where isResign = 0";
+            string qry = "SELECT id,fullName from tbl_users where isResign = 0";
             SqlCommand cmd = new SqlCommand(qry, con);
             cmd.CommandText = qry;
 
@@ -688,27 +812,23 @@ namespace InventorySystem
                                             cmdResign.ExecuteNonQuery();
                                             con.Close();
                                             }
-                                           
+
 
 
 
                                         //Refresh dgvAssets
-
-                                            refreshdgvAssets();
-
                                         con.Close();
+                                        refreshdgvAssets();
+
+
                                         //Refresh dgvUser
-                                            refreshCatListofNames();
+                                        con.Close();
+                                        refreshCatListofNames();
                                             refreshViewDeployed();
                                             refreshDashboard();
                                             refreshGridDeploy();
-
-
-
                                         }
-
                                         con.Close();
-
                                 }
                                 else
                                 {
@@ -977,7 +1097,7 @@ namespace InventorySystem
                 //Assets
                 string searchText = txtAssetsSearch.Text;
                 con.Open();
-                string qry1 = "SELECT id,category,brand,specs,serial,remarks,oldUser from vGrid_deployDetails where action = 0 OR action = 2 AND status = 'Working' AND category LIKE @searchText";
+                string qry1 = "SELECT id,category,brand,specs,serial,remarks,oldUser from vGrid_assets where category LIKE 'power supply' AND action = 0 OR action = 2 AND status = 'Working'";
 
                 using (SqlCommand cmd = new SqlCommand(qry1, con))
                 {
@@ -1001,7 +1121,7 @@ namespace InventorySystem
             {
                 string searchText = txtAssetsSearch.Text;
                 con.Open();
-                string qry1 = "SELECT * FROM tbl_users WHERE fullName LIKE @searchText AND isResign = 0";
+                string qry1 = "SELECT id,fullName FROM tbl_users WHERE fullName LIKE @searchText AND isResign = 0";
 
                 using (SqlCommand cmd = new SqlCommand(qry1, con))
                 {
@@ -1378,6 +1498,22 @@ namespace InventorySystem
             gbInventory.Hide();
             gbDashboard.Hide();
             tabViewDeployment.Hide();
+            disabler();
+            clear();
+
+
+            //reset btn on inventory
+            btnAdd.Enabled = true;
+            btnEdit.Enabled = true;
+            btnDelete.Enabled = true;
+
+            btnAdd.BackColor = Color.White;
+            btnEdit.BackColor = Color.White;
+            btnDelete.BackColor = Color.White;
+
+            btnAdd.ForeColor = Color.Black;
+            btnEdit.ForeColor = Color.Black;
+            btnDelete.ForeColor = Color.Black;
 
             con.Open();
             string qryPullout = "SELECT fullName,id,category,brand,specs,serial,remarks,datePullout,oldUser from vGrid_finalPullOut where action = 2 ORDER BY datePullout ASC";
@@ -1503,6 +1639,108 @@ namespace InventorySystem
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnDashboard_MouseEnter(object sender, EventArgs e)
+        {
+            //btnDashboard.BackColor = Color.FromArgb(8, 71, 124);
+            //btnDashboard.ForeColor = Color.FromArgb(252, 219, 4);
+        }
+
+        private void btnDashboard_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnDashboard.BackColor = Color.FromArgb(8, 71, 124);
+            btnDashboard.ForeColor = Color.FromArgb(252, 219, 4);
+
+            btnInventory.BackColor = Color.White;
+            btnInventory.ForeColor = Color.Black;
+
+            btnDeploy.BackColor = Color.White;
+            btnDeploy.ForeColor = Color.Black;
+
+            btnPullOut.BackColor = Color.White;
+            btnPullOut.ForeColor = Color.Black;
+        }
+
+        private void btnInventory_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnInventory.BackColor = Color.FromArgb(8, 71, 124);
+            btnInventory.ForeColor = Color.FromArgb(252, 219, 4);
+
+            btnDashboard.BackColor = Color.White;
+            btnDashboard.ForeColor = Color.Black;
+
+            btnDeploy.BackColor = Color.White;
+            btnDeploy.ForeColor = Color.Black;
+
+            btnPullOut.BackColor = Color.White;
+            btnPullOut.ForeColor = Color.Black;
+
+        }
+
+        private void btnDeploy_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnDeploy.BackColor = Color.FromArgb(8, 71, 124);
+            btnDeploy.ForeColor = Color.FromArgb(252, 219, 4);
+
+            btnDashboard.BackColor = Color.White;
+            btnDashboard.ForeColor = Color.Black;
+
+            btnInventory.BackColor = Color.White;
+            btnInventory.ForeColor = Color.Black;
+
+            btnPullOut.BackColor = Color.White;
+            btnPullOut.ForeColor = Color.Black;
+        }
+
+        private void btnPullOut_MouseClick(object sender, MouseEventArgs e)
+        {
+            btnPullOut.BackColor = Color.FromArgb(8, 71, 124);
+            btnPullOut.ForeColor = Color.FromArgb(252, 219, 4);
+
+
+            btnDashboard.BackColor = Color.White;
+            btnDashboard.ForeColor = Color.Black;
+
+            btnDeploy.BackColor = Color.White;
+            btnDeploy.ForeColor = Color.Black;
+
+            btnInventory.BackColor = Color.White;
+            btnInventory.ForeColor = Color.Black;
+        }
+
+        private void gbInventory_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnSearch_Click(this, new EventArgs());
+                txtSearch.Clear();
+            }
+        }
+
+        private void txtAssetsSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefreshDeployDetails_Click(object sender, EventArgs e)
+        {
+            //dgvViewDeployments
+            con.Open();
+            string qryView = "SELECT fullName,id,category,brand,specs,serial,remarks,dateDeploy,oldUser from vGrid_finalDeployViewDetails where action = 1 ORDER BY dateDeploy ASC";
+            SqlCommand cmdView = new SqlCommand(qryView, con);
+            cmdView.CommandText = qryView;
+
+            SqlDataAdapter daView = new SqlDataAdapter(cmdView);
+            DataTable dtView = new DataTable();
+            daView.Fill(dtView);
+            dgvViewDeployment.DataSource = dtView;
+            con.Close();
         }
     }
 }

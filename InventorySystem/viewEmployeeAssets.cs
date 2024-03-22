@@ -185,21 +185,23 @@ namespace InventorySystem
 
 
             con.Open();
-            string qryr = "SELECT id,category,brand,specs,serial,remarks,dateDeploy,oldUser from vGrid_ViewDetails where setID = @setID AND action = 1";
+            string qryr = "SELECT id,category,brand,specs,serial,remarks,dateDeploy,oldUser from vGrid_ViewDetails where setID = @setID AND action = 0 OR action = 2";
             SqlCommand cmdr = new SqlCommand(qryr, con);
             cmdr.Parameters.AddWithValue("@setID", uid);
 
-            int checker = cmdr.ExecuteNonQuery();
-            con.Close();
-            if (checker > 0)
+            SqlDataReader checker = cmdr.ExecuteReader();
+
+            checker.Read();
+            if (checker.HasRows)
             {
+                con.Close();
                 con.Open();
                 string qry = "UPDATE tbl_users SET isResign = @isResign where id = @setID";
                 SqlCommand cmd = new SqlCommand(qry, con);
                 cmd.Parameters.AddWithValue("@isResign", 1);
                 cmd.Parameters.AddWithValue("setID", uid);
                 cmd.ExecuteNonQuery();
-                con.Close();
+                
 
                 MessageBox.Show(string.Format("SULIT! {0} Resigned Sucessfully!", getName));
                 this.Hide();
@@ -208,6 +210,8 @@ namespace InventorySystem
             {
                 MessageBox.Show(string.Format("SULIT! cant proceed, {0} has asset(s)!", getName));
             }
+            checker.Close();
+            con.Close();
         }
     }
 }

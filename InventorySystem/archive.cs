@@ -24,9 +24,8 @@ namespace InventorySystem
 
         private void archive_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dbset40.tbl_archive' table. You can move, or remove it, as needed.
-            this.tbl_archiveTableAdapter.Fill(this.dbset40.tbl_archive);
-            // TODO: This line of code loads data into the 'datasetarchive.tbl_archive' table. You can move, or remove it, as needed.
+            // TODO: This line of code loads data into the 'dbset42.tbl_archive' table. You can move, or remove it, as needed.
+            this.tbl_archiveTableAdapter.Fill(this.dbset42.tbl_archive);
             con.Open();
             string qryView = "SELECT id,setID,dateDelete,category,brand,specs,serial,status,remarks from tbl_archive";
             SqlCommand cmdView = new SqlCommand(qryView, con);

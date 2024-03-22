@@ -31,27 +31,44 @@ namespace InventorySystem
         {
             if (txtNewCat.Text != "")
             {
-
                 con.Open();
+                // Check if the fullName already exists
+                string checkQuery = "SELECT COUNT(*) FROM tbl_category WHERE category = @category";
+                SqlCommand checkCmd = new SqlCommand(checkQuery, con);
+                checkCmd.Parameters.AddWithValue("@category", txtNewCat.Text);
+                int existingCount = (int)checkCmd.ExecuteScalar();
+                con.Close();
 
-                string newCategory = txtNewCat.Text;
-                string qry = "INSERT INTO tbl_category(category) VALUES (@category)";
-                SqlCommand cmd = new SqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@category", newCategory);
 
-                int rowsAffected = cmd.ExecuteNonQuery();
-
-                if (rowsAffected > 0)
+                if (existingCount < 1)
                 {
-                    MessageBox.Show("Added successful!");
+                    con.Open();
+                    string newCategory = txtNewCat.Text;
+                    string qry = "INSERT INTO tbl_category(category) VALUES (@category)";
+                    SqlCommand cmd = new SqlCommand(qry, con);
+                    cmd.Parameters.AddWithValue("@category", newCategory);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Added successful!");
+                        con.Close();
+                        txtNewCat.Clear();
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Adding failed.");
+                    }
                     con.Close();
-                    txtNewCat.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Adding failed.");
+                    MessageBox.Show("Category already exist");
                 }
-                con.Close();
+               
             }
             else
             {

@@ -81,7 +81,7 @@ namespace InventorySystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnResign);
             this.Controls.Add(this.button2);

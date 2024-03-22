@@ -31,9 +31,9 @@ namespace InventorySystem
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboardMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.p1 = new System.Windows.Forms.Panel();
             this.btnPullOut = new System.Windows.Forms.Button();
             this.btnDeploy = new System.Windows.Forms.Button();
@@ -65,14 +65,6 @@ namespace InventorySystem
             this.label1 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblassetsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tryDBDataSet = new InventorySystem.tryDBDataSet();
             this.gbDashboard = new System.Windows.Forms.GroupBox();
@@ -133,91 +125,19 @@ namespace InventorySystem
             this.btnAssetsSearch = new System.Windows.Forms.Button();
             this.txtAssetsSearch = new System.Windows.Forms.TextBox();
             this.dgv_vAssets = new System.Windows.Forms.DataGridView();
-            this.action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oldUserDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vGriddeployDetailsBindingSource9 = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset16 = new InventorySystem.dbset16();
             this.txtNameDeploy = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btn2Deploy = new System.Windows.Forms.Button();
             this.btnLaptopRefresh = new System.Windows.Forms.Button();
             this.dgvDeploy = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDetails = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.vGriddeployUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.db1 = new InventorySystem.db1();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnViewSearch = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.txtViewSearch = new System.Windows.Forms.TextBox();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.dgvViewDeployment = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dateDeployDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.oldUserDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.vGridfinalDeployViewDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset35 = new InventorySystem.dbset35();
-            this.vGridViewDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset22 = new InventorySystem.dbset22();
-            this.vGriddeployDetailsBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset13 = new InventorySystem.dbset13();
-            this.tblassetsBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataset09 = new InventorySystem.dataset09();
-            this.vGriddeployDetailsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.leftJoin = new InventorySystem.LeftJoin();
             this.tbl_assetsTableAdapter = new InventorySystem.tryDBDataSetTableAdapters.tbl_assetsTableAdapter();
-            this.tblDeploymentUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbl_DeploymentUserTableAdapter = new InventorySystem.tryDBDataSetTableAdapters.tbl_DeploymentUserTableAdapter();
-            this.tblDeploymentUserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployUserTableAdapter = new InventorySystem.db1TableAdapters.vGrid_deployUserTableAdapter();
-            this.vGriddeployDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter = new InventorySystem.db1TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.vGriddeployDetailsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter1 = new InventorySystem.LeftJoinTableAdapters.vGrid_deployDetailsTableAdapter();
-            this.dbset01 = new InventorySystem.dbset01();
-            this.vGriddeployDetailsBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter2 = new InventorySystem.dbset01TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.dbset02 = new InventorySystem.dbset02();
-            this.vGriddeployDetailsBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter3 = new InventorySystem.dbset02TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.dbset03 = new InventorySystem.dbset03();
-            this.vGriddeployDetailsBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter4 = new InventorySystem.dbset03TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.vGriddeployDetailsBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataset07 = new InventorySystem.dataset07();
-            this.tblassetsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_assetsTableAdapter1 = new InventorySystem.dataset07TableAdapters.tbl_assetsTableAdapter();
-            this.tbl_assetsTableAdapter2 = new InventorySystem.dataset09TableAdapters.tbl_assetsTableAdapter();
-            this.dataset10 = new InventorySystem.dataset10();
-            this.tblassetsBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_assetsTableAdapter3 = new InventorySystem.dataset10TableAdapters.tbl_assetsTableAdapter();
-            this.vGriddeployDetailsBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_deployDetailsTableAdapter5 = new InventorySystem.dataset10TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.dbset11 = new InventorySystem.dbset11();
-            this.tblassetsBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_assetsTableAdapter4 = new InventorySystem.dbset11TableAdapters.tbl_assetsTableAdapter();
-            this.tblassetsBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.tblassetsBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset12 = new InventorySystem.dbset12();
-            this.tblassetsBindingSource8 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_assetsTableAdapter5 = new InventorySystem.dbset12TableAdapters.tbl_assetsTableAdapter();
-            this.tblassetsBindingSource9 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_assetsTableAdapter6 = new InventorySystem.dbset13TableAdapters.tbl_assetsTableAdapter();
-            this.vGrid_deployDetailsTableAdapter6 = new InventorySystem.dbset13TableAdapters.vGrid_deployDetailsTableAdapter();
-            this.vGrid_deployDetailsTableAdapter7 = new InventorySystem.dbset16TableAdapters.vGrid_deployDetailsTableAdapter();
             this.tipAssetsSearch = new System.Windows.Forms.ToolTip(this.components);
             this.tipAssetFilter = new System.Windows.Forms.ToolTip(this.components);
             this.tip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -226,12 +146,43 @@ namespace InventorySystem
             this.btnViewpullSearch = new System.Windows.Forms.Button();
             this.txtPulloutSearch = new System.Windows.Forms.TextBox();
             this.dgv_viewPullout = new System.Windows.Forms.DataGridView();
-            this.vGrid_ViewDetailsTableAdapter = new InventorySystem.dbset22TableAdapters.vGrid_ViewDetailsTableAdapter();
-            this.dbset24 = new InventorySystem.dbset24();
-            this.vGridViewDetailsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_ViewDetailsTableAdapter1 = new InventorySystem.dbset24TableAdapters.vGrid_ViewDetailsTableAdapter();
-            this.tblassetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.vGrid_finalDeployViewDetailsTableAdapter = new InventorySystem.dbset35TableAdapters.vGrid_finalDeployViewDetailsTableAdapter();
+            this.vGriddeployDetailsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.tblDeploymentUserBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tblDeploymentUserBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.dbset44 = new InventorySystem.dbset44();
+            this.vGridassetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vGrid_assetsTableAdapter = new InventorySystem.dbset44TableAdapters.vGrid_assetsTableAdapter();
+            this.dbset45 = new InventorySystem.dbset45();
+            this.vGridassetsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.vGrid_assetsTableAdapter1 = new InventorySystem.dbset45TableAdapters.vGrid_assetsTableAdapter();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusNameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_assetsTableAdapter1 = new InventorySystem.dbset45TableAdapters.tbl_assetsTableAdapter();
+            this.dbset46 = new InventorySystem.dbset46();
+            this.vGridassetsBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.vGrid_assetsTableAdapter2 = new InventorySystem.dbset46TableAdapters.vGrid_assetsTableAdapter();
+            this.action = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn40 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_usersTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_usersTableAdapter();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn38 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDetails = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnRefreshDeployDetails = new System.Windows.Forms.Button();
             this.p1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gbInventory.SuspendLayout();
@@ -264,57 +215,29 @@ namespace InventorySystem
             this.tabViewDeployment.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vAssets)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeploy)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployUserBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewDeployment)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridfinalDeployViewDetailsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset35)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridViewDetailsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset22)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset09)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftJoin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset01)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset02)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset03)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset07)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset12)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource9)).BeginInit();
             this.tabPullout.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_viewPullout)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset24)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridViewDetailsBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset44)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset45)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblusersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // p1
             // 
-            this.p1.BackColor = System.Drawing.Color.Yellow;
+            this.p1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(219)))), ((int)(((byte)(4)))));
             this.p1.Controls.Add(this.btnPullOut);
             this.p1.Controls.Add(this.btnDeploy);
             this.p1.Controls.Add(this.panel1);
@@ -341,6 +264,7 @@ namespace InventorySystem
             this.btnPullOut.Text = "Pull Out";
             this.btnPullOut.UseVisualStyleBackColor = false;
             this.btnPullOut.Click += new System.EventHandler(this.btnPullOut_Click_1);
+            this.btnPullOut.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnPullOut_MouseClick);
             // 
             // btnDeploy
             // 
@@ -355,6 +279,7 @@ namespace InventorySystem
             this.btnDeploy.Text = "Deployment";
             this.btnDeploy.UseVisualStyleBackColor = false;
             this.btnDeploy.Click += new System.EventHandler(this.btnPullout_Click);
+            this.btnDeploy.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnDeploy_MouseClick);
             // 
             // panel1
             // 
@@ -391,9 +316,11 @@ namespace InventorySystem
             this.btnInventory.Text = "Inventory";
             this.btnInventory.UseVisualStyleBackColor = false;
             this.btnInventory.Click += new System.EventHandler(this.btnInventory_Click);
+            this.btnInventory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnInventory_MouseClick);
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(219)))), ((int)(((byte)(4)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
@@ -415,9 +342,12 @@ namespace InventorySystem
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnDashboard.MouseClick += new System.Windows.Forms.MouseEventHandler(this.btnDashboard_MouseClick);
+            this.btnDashboard.MouseEnter += new System.EventHandler(this.btnDashboard_MouseEnter);
             // 
             // p2
             // 
+            this.p2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(219)))), ((int)(((byte)(4)))));
             this.p2.Location = new System.Drawing.Point(0, 0);
             this.p2.Name = "p2";
             this.p2.Size = new System.Drawing.Size(200, 100);
@@ -469,11 +399,12 @@ namespace InventorySystem
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtSearch.Location = new System.Drawing.Point(765, 128);
+            this.txtSearch.Location = new System.Drawing.Point(775, 123);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(282, 31);
             this.txtSearch.TabIndex = 11;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // btnSearch
             // 
@@ -481,7 +412,7 @@ namespace InventorySystem
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSearch.Location = new System.Drawing.Point(1053, 126);
+            this.btnSearch.Location = new System.Drawing.Point(1063, 123);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(68, 34);
             this.btnSearch.TabIndex = 12;
@@ -491,7 +422,7 @@ namespace InventorySystem
             // 
             // gbInventory
             // 
-            this.gbInventory.BackColor = System.Drawing.Color.Navy;
+            this.gbInventory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.gbInventory.Controls.Add(this.btnDone);
             this.gbInventory.Controls.Add(this.rRemarks);
             this.gbInventory.Controls.Add(this.label7);
@@ -521,6 +452,7 @@ namespace InventorySystem
             this.gbInventory.TabIndex = 13;
             this.gbInventory.TabStop = false;
             this.gbInventory.Text = "Inventory";
+            this.gbInventory.Enter += new System.EventHandler(this.gbInventory_Enter);
             // 
             // btnDone
             // 
@@ -539,16 +471,16 @@ namespace InventorySystem
             // rRemarks
             // 
             this.rRemarks.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rRemarks.Location = new System.Drawing.Point(765, 31);
+            this.rRemarks.Location = new System.Drawing.Point(775, 25);
             this.rRemarks.Name = "rRemarks";
-            this.rRemarks.Size = new System.Drawing.Size(430, 66);
+            this.rRemarks.Size = new System.Drawing.Size(430, 87);
             this.rRemarks.TabIndex = 6;
             this.rRemarks.Text = "";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(669, 33);
+            this.label7.Location = new System.Drawing.Point(679, 92);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 20);
             this.label7.TabIndex = 34;
@@ -559,12 +491,9 @@ namespace InventorySystem
             this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Items.AddRange(new object[] {
-            "Working",
-            "Disposal"});
-            this.cbStatus.Location = new System.Drawing.Point(563, 31);
+            this.cbStatus.Location = new System.Drawing.Point(570, 31);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(100, 29);
+            this.cbStatus.Size = new System.Drawing.Size(185, 29);
             this.cbStatus.TabIndex = 5;
             // 
             // txtSerial
@@ -578,7 +507,7 @@ namespace InventorySystem
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(490, 37);
+            this.label8.Location = new System.Drawing.Point(497, 37);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 20);
             this.label8.TabIndex = 30;
@@ -650,7 +579,7 @@ namespace InventorySystem
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(688, 135);
+            this.label1.Location = new System.Drawing.Point(698, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 20);
             this.label1.TabIndex = 16;
@@ -662,7 +591,7 @@ namespace InventorySystem
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClear.Location = new System.Drawing.Point(1127, 126);
+            this.btnClear.Location = new System.Drawing.Point(1137, 123);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(68, 34);
             this.btnClear.TabIndex = 13;
@@ -676,111 +605,50 @@ namespace InventorySystem
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn16,
             this.dataGridViewTextBoxColumn10,
             this.dataGridViewTextBoxColumn11,
             this.dataGridViewTextBoxColumn12,
             this.dataGridViewTextBoxColumn13,
+            this.statusNameDataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15});
-            this.dataGridView1.DataSource = this.tblassetsBindingSource1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.DataSource = this.vGridassetsBindingSource1;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView1.Location = new System.Drawing.Point(2, 169);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridView1.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.Size = new System.Drawing.Size(1228, 531);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn9.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "date";
-            this.dataGridViewTextBoxColumn16.HeaderText = "Date";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            this.dataGridViewTextBoxColumn16.Width = 160;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "category";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "brand";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Brand";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "specs";
-            this.dataGridViewTextBoxColumn12.HeaderText = "Specs";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            this.dataGridViewTextBoxColumn12.Width = 210;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "serial";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Serial";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Width = 250;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "status";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "remarks";
-            this.dataGridViewTextBoxColumn15.HeaderText = "Remarks";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            this.dataGridViewTextBoxColumn15.Width = 210;
             // 
             // tblassetsBindingSource1
             // 
@@ -794,7 +662,7 @@ namespace InventorySystem
             // 
             // gbDashboard
             // 
-            this.gbDashboard.BackColor = System.Drawing.Color.Navy;
+            this.gbDashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.gbDashboard.Controls.Add(this.panel22);
             this.gbDashboard.Controls.Add(this.panel3);
             this.gbDashboard.Controls.Add(this.panel2);
@@ -1378,7 +1246,7 @@ namespace InventorySystem
             this.tabViewDeployment.Controls.Add(this.tabPage1);
             this.tabViewDeployment.Controls.Add(this.tabPage2);
             this.tabViewDeployment.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabViewDeployment.Location = new System.Drawing.Point(132, 0);
+            this.tabViewDeployment.Location = new System.Drawing.Point(132, 1);
             this.tabViewDeployment.Name = "tabViewDeployment";
             this.tabViewDeployment.SelectedIndex = 0;
             this.tabViewDeployment.Size = new System.Drawing.Size(1233, 695);
@@ -1386,7 +1254,7 @@ namespace InventorySystem
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.Navy;
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.tabPage1.Controls.Add(this.chkSearch);
             this.tabPage1.Controls.Add(this.btnAssetsSearch);
             this.tabPage1.Controls.Add(this.txtAssetsSearch);
@@ -1432,6 +1300,7 @@ namespace InventorySystem
             this.txtAssetsSearch.Name = "txtAssetsSearch";
             this.txtAssetsSearch.Size = new System.Drawing.Size(155, 24);
             this.txtAssetsSearch.TabIndex = 8;
+            this.txtAssetsSearch.TextChanged += new System.EventHandler(this.txtAssetsSearch_TextChanged);
             this.txtAssetsSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAssetsSearch_KeyDown);
             // 
             // dgv_vAssets
@@ -1441,87 +1310,19 @@ namespace InventorySystem
             this.dgv_vAssets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_vAssets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.action,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.oldUserDataGridViewTextBoxColumn1});
-            this.dgv_vAssets.DataSource = this.vGriddeployDetailsBindingSource9;
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn32,
+            this.dataGridViewTextBoxColumn33,
+            this.dataGridViewTextBoxColumn34,
+            this.dataGridViewTextBoxColumn35,
+            this.statusNameDataGridViewTextBoxColumn,
+            this.dataGridViewTextBoxColumn36,
+            this.dataGridViewTextBoxColumn40});
+            this.dgv_vAssets.DataSource = this.vGridassetsBindingSource2;
             this.dgv_vAssets.Location = new System.Drawing.Point(391, 73);
             this.dgv_vAssets.Name = "dgv_vAssets";
             this.dgv_vAssets.Size = new System.Drawing.Size(828, 590);
             this.dgv_vAssets.TabIndex = 7;
-            // 
-            // action
-            // 
-            this.action.HeaderText = "Action";
-            this.action.Name = "action";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn19.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
-            this.dataGridViewTextBoxColumn19.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "category";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "brand";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Brand";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "specs";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Specs";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            this.dataGridViewTextBoxColumn22.ReadOnly = true;
-            this.dataGridViewTextBoxColumn22.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "serial";
-            this.dataGridViewTextBoxColumn23.HeaderText = "Serial";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
-            this.dataGridViewTextBoxColumn23.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn24
-            // 
-            this.dataGridViewTextBoxColumn24.DataPropertyName = "remarks";
-            this.dataGridViewTextBoxColumn24.HeaderText = "Remarks";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
-            this.dataGridViewTextBoxColumn24.Width = 200;
-            // 
-            // oldUserDataGridViewTextBoxColumn1
-            // 
-            this.oldUserDataGridViewTextBoxColumn1.DataPropertyName = "oldUser";
-            this.oldUserDataGridViewTextBoxColumn1.HeaderText = "Old User";
-            this.oldUserDataGridViewTextBoxColumn1.Name = "oldUserDataGridViewTextBoxColumn1";
-            this.oldUserDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.oldUserDataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // vGriddeployDetailsBindingSource9
-            // 
-            this.vGriddeployDetailsBindingSource9.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource9.DataSource = this.dbset16;
-            // 
-            // dbset16
-            // 
-            this.dbset16.DataSetName = "dbset16";
-            this.dbset16.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtNameDeploy
             // 
@@ -1569,10 +1370,10 @@ namespace InventorySystem
             this.dgvDeploy.AutoGenerateColumns = false;
             this.dgvDeploy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDeploy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn37,
+            this.dataGridViewTextBoxColumn38,
             this.btnDetails});
-            this.dgvDeploy.DataSource = this.vGriddeployUserBindingSource;
+            this.dgvDeploy.DataSource = this.tblusersBindingSource;
             this.dgvDeploy.Location = new System.Drawing.Point(1, 72);
             this.dgvDeploy.Name = "dgvDeploy";
             this.dgvDeploy.ReadOnly = true;
@@ -1581,47 +1382,13 @@ namespace InventorySystem
             this.dgvDeploy.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeploy_CellContentClick);
             this.dgvDeploy.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDeploy_CellContentDoubleClick);
             // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn17.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.DataPropertyName = "fullName";
-            this.dataGridViewTextBoxColumn18.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
-            // 
-            // btnDetails
-            // 
-            this.btnDetails.HeaderText = "Details";
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.ReadOnly = true;
-            this.btnDetails.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnDetails.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnDetails.Text = "View";
-            this.btnDetails.UseColumnTextForButtonValue = true;
-            // 
-            // vGriddeployUserBindingSource
-            // 
-            this.vGriddeployUserBindingSource.DataMember = "vGrid_deployUser";
-            this.vGriddeployUserBindingSource.DataSource = this.db1;
-            // 
-            // db1
-            // 
-            this.db1.DataSetName = "db1";
-            this.db1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tabPage2
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Navy;
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
+            this.tabPage2.Controls.Add(this.btnRefreshDeployDetails);
             this.tabPage2.Controls.Add(this.btnViewSearch);
             this.tabPage2.Controls.Add(this.label19);
             this.tabPage2.Controls.Add(this.txtViewSearch);
-            this.tabPage2.Controls.Add(this.btnRefresh);
             this.tabPage2.Controls.Add(this.dgvViewDeployment);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
@@ -1661,155 +1428,14 @@ namespace InventorySystem
             this.txtViewSearch.TabIndex = 17;
             this.txtViewSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtViewSearch_KeyDown);
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.White;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Location = new System.Drawing.Point(485, 13);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 40);
-            this.btnRefresh.TabIndex = 16;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click_1);
-            // 
             // dgvViewDeployment
             // 
-            this.dgvViewDeployment.AutoGenerateColumns = false;
             this.dgvViewDeployment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViewDeployment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
-            this.dataGridViewTextBoxColumn27,
-            this.dataGridViewTextBoxColumn28,
-            this.dataGridViewTextBoxColumn29,
-            this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
-            this.dateDeployDataGridViewTextBoxColumn,
-            this.oldUserDataGridViewTextBoxColumn});
-            this.dgvViewDeployment.DataSource = this.vGridfinalDeployViewDetailsBindingSource;
             this.dgvViewDeployment.Location = new System.Drawing.Point(0, 73);
             this.dgvViewDeployment.Name = "dgvViewDeployment";
             this.dgvViewDeployment.ReadOnly = true;
             this.dgvViewDeployment.Size = new System.Drawing.Size(1225, 590);
             this.dgvViewDeployment.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn25
-            // 
-            this.dataGridViewTextBoxColumn25.DataPropertyName = "fullName";
-            this.dataGridViewTextBoxColumn25.HeaderText = "Full Name";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
-            this.dataGridViewTextBoxColumn25.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn26
-            // 
-            this.dataGridViewTextBoxColumn26.DataPropertyName = "id";
-            this.dataGridViewTextBoxColumn26.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn26.MinimumWidth = 80;
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn27
-            // 
-            this.dataGridViewTextBoxColumn27.DataPropertyName = "category";
-            this.dataGridViewTextBoxColumn27.HeaderText = "Category";
-            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
-            this.dataGridViewTextBoxColumn27.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn28
-            // 
-            this.dataGridViewTextBoxColumn28.DataPropertyName = "brand";
-            this.dataGridViewTextBoxColumn28.HeaderText = "Brand";
-            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
-            this.dataGridViewTextBoxColumn28.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn29
-            // 
-            this.dataGridViewTextBoxColumn29.DataPropertyName = "specs";
-            this.dataGridViewTextBoxColumn29.HeaderText = "Specs";
-            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
-            this.dataGridViewTextBoxColumn29.ReadOnly = true;
-            this.dataGridViewTextBoxColumn29.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn30
-            // 
-            this.dataGridViewTextBoxColumn30.DataPropertyName = "serial";
-            this.dataGridViewTextBoxColumn30.HeaderText = "Serial";
-            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
-            this.dataGridViewTextBoxColumn30.ReadOnly = true;
-            this.dataGridViewTextBoxColumn30.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn31
-            // 
-            this.dataGridViewTextBoxColumn31.DataPropertyName = "remarks";
-            this.dataGridViewTextBoxColumn31.HeaderText = "Remarks";
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
-            this.dataGridViewTextBoxColumn31.Width = 200;
-            // 
-            // dateDeployDataGridViewTextBoxColumn
-            // 
-            this.dateDeployDataGridViewTextBoxColumn.DataPropertyName = "dateDeploy";
-            this.dateDeployDataGridViewTextBoxColumn.HeaderText = "Date Deploy";
-            this.dateDeployDataGridViewTextBoxColumn.Name = "dateDeployDataGridViewTextBoxColumn";
-            this.dateDeployDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dateDeployDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // oldUserDataGridViewTextBoxColumn
-            // 
-            this.oldUserDataGridViewTextBoxColumn.DataPropertyName = "oldUser";
-            this.oldUserDataGridViewTextBoxColumn.HeaderText = "Old User";
-            this.oldUserDataGridViewTextBoxColumn.Name = "oldUserDataGridViewTextBoxColumn";
-            this.oldUserDataGridViewTextBoxColumn.ReadOnly = true;
-            this.oldUserDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // vGridfinalDeployViewDetailsBindingSource
-            // 
-            this.vGridfinalDeployViewDetailsBindingSource.DataMember = "vGrid_finalDeployViewDetails";
-            this.vGridfinalDeployViewDetailsBindingSource.DataSource = this.dbset35;
-            // 
-            // dbset35
-            // 
-            this.dbset35.DataSetName = "dbset35";
-            this.dbset35.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGridViewDetailsBindingSource
-            // 
-            this.vGridViewDetailsBindingSource.DataMember = "vGrid_ViewDetails";
-            this.vGridViewDetailsBindingSource.DataSource = this.dbset22;
-            // 
-            // dbset22
-            // 
-            this.dbset22.DataSetName = "dbset22";
-            this.dbset22.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGriddeployDetailsBindingSource8
-            // 
-            this.vGriddeployDetailsBindingSource8.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource8.DataSource = this.dbset13;
-            // 
-            // dbset13
-            // 
-            this.dbset13.DataSetName = "dbset13";
-            this.dbset13.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblassetsBindingSource3
-            // 
-            this.tblassetsBindingSource3.DataMember = "tbl_assets";
-            this.tblassetsBindingSource3.DataSource = this.dataset09;
-            // 
-            // dataset09
-            // 
-            this.dataset09.DataSetName = "dataset09";
-            this.dataset09.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGriddeployDetailsBindingSource2
-            // 
-            this.vGriddeployDetailsBindingSource2.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource2.DataSource = this.leftJoin;
             // 
             // leftJoin
             // 
@@ -1820,184 +1446,9 @@ namespace InventorySystem
             // 
             this.tbl_assetsTableAdapter.ClearBeforeFill = true;
             // 
-            // tblDeploymentUserBindingSource
-            // 
-            this.tblDeploymentUserBindingSource.DataMember = "tbl_DeploymentUser";
-            this.tblDeploymentUserBindingSource.DataSource = this.tryDBDataSet;
-            // 
             // tbl_DeploymentUserTableAdapter
             // 
             this.tbl_DeploymentUserTableAdapter.ClearBeforeFill = true;
-            // 
-            // tblDeploymentUserBindingSource1
-            // 
-            this.tblDeploymentUserBindingSource1.DataMember = "tbl_DeploymentUser";
-            this.tblDeploymentUserBindingSource1.DataSource = this.tryDBDataSet;
-            // 
-            // vGrid_deployUserTableAdapter
-            // 
-            this.vGrid_deployUserTableAdapter.ClearBeforeFill = true;
-            // 
-            // vGriddeployDetailsBindingSource
-            // 
-            this.vGriddeployDetailsBindingSource.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource.DataSource = this.db1;
-            // 
-            // vGrid_deployDetailsTableAdapter
-            // 
-            this.vGrid_deployDetailsTableAdapter.ClearBeforeFill = true;
-            // 
-            // vGriddeployDetailsBindingSource1
-            // 
-            this.vGriddeployDetailsBindingSource1.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource1.DataSource = this.db1;
-            // 
-            // vGrid_deployDetailsTableAdapter1
-            // 
-            this.vGrid_deployDetailsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // dbset01
-            // 
-            this.dbset01.DataSetName = "dbset01";
-            this.dbset01.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGriddeployDetailsBindingSource3
-            // 
-            this.vGriddeployDetailsBindingSource3.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource3.DataSource = this.dbset01;
-            // 
-            // vGrid_deployDetailsTableAdapter2
-            // 
-            this.vGrid_deployDetailsTableAdapter2.ClearBeforeFill = true;
-            // 
-            // dbset02
-            // 
-            this.dbset02.DataSetName = "dbset02";
-            this.dbset02.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGriddeployDetailsBindingSource4
-            // 
-            this.vGriddeployDetailsBindingSource4.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource4.DataSource = this.dbset02;
-            // 
-            // vGrid_deployDetailsTableAdapter3
-            // 
-            this.vGrid_deployDetailsTableAdapter3.ClearBeforeFill = true;
-            // 
-            // dbset03
-            // 
-            this.dbset03.DataSetName = "dbset03";
-            this.dbset03.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // vGriddeployDetailsBindingSource5
-            // 
-            this.vGriddeployDetailsBindingSource5.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource5.DataSource = this.dbset03;
-            // 
-            // vGrid_deployDetailsTableAdapter4
-            // 
-            this.vGrid_deployDetailsTableAdapter4.ClearBeforeFill = true;
-            // 
-            // vGriddeployDetailsBindingSource6
-            // 
-            this.vGriddeployDetailsBindingSource6.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource6.DataSource = this.dbset03;
-            // 
-            // dataset07
-            // 
-            this.dataset07.DataSetName = "dataset07";
-            this.dataset07.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblassetsBindingSource2
-            // 
-            this.tblassetsBindingSource2.DataMember = "tbl_assets";
-            this.tblassetsBindingSource2.DataSource = this.dataset07;
-            // 
-            // tbl_assetsTableAdapter1
-            // 
-            this.tbl_assetsTableAdapter1.ClearBeforeFill = true;
-            // 
-            // tbl_assetsTableAdapter2
-            // 
-            this.tbl_assetsTableAdapter2.ClearBeforeFill = true;
-            // 
-            // dataset10
-            // 
-            this.dataset10.DataSetName = "dataset10";
-            this.dataset10.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblassetsBindingSource4
-            // 
-            this.tblassetsBindingSource4.DataMember = "tbl_assets";
-            this.tblassetsBindingSource4.DataSource = this.dataset10;
-            // 
-            // tbl_assetsTableAdapter3
-            // 
-            this.tbl_assetsTableAdapter3.ClearBeforeFill = true;
-            // 
-            // vGriddeployDetailsBindingSource7
-            // 
-            this.vGriddeployDetailsBindingSource7.DataMember = "vGrid_deployDetails";
-            this.vGriddeployDetailsBindingSource7.DataSource = this.dataset10;
-            // 
-            // vGrid_deployDetailsTableAdapter5
-            // 
-            this.vGrid_deployDetailsTableAdapter5.ClearBeforeFill = true;
-            // 
-            // dbset11
-            // 
-            this.dbset11.DataSetName = "dbset11";
-            this.dbset11.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblassetsBindingSource5
-            // 
-            this.tblassetsBindingSource5.DataMember = "tbl_assets";
-            this.tblassetsBindingSource5.DataSource = this.dbset11;
-            // 
-            // tbl_assetsTableAdapter4
-            // 
-            this.tbl_assetsTableAdapter4.ClearBeforeFill = true;
-            // 
-            // tblassetsBindingSource6
-            // 
-            this.tblassetsBindingSource6.DataMember = "tbl_assets";
-            this.tblassetsBindingSource6.DataSource = this.dbset11;
-            // 
-            // tblassetsBindingSource7
-            // 
-            this.tblassetsBindingSource7.DataMember = "tbl_assets";
-            this.tblassetsBindingSource7.DataSource = this.dbset11;
-            // 
-            // dbset12
-            // 
-            this.dbset12.DataSetName = "dbset12";
-            this.dbset12.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblassetsBindingSource8
-            // 
-            this.tblassetsBindingSource8.DataMember = "tbl_assets";
-            this.tblassetsBindingSource8.DataSource = this.dbset12;
-            // 
-            // tbl_assetsTableAdapter5
-            // 
-            this.tbl_assetsTableAdapter5.ClearBeforeFill = true;
-            // 
-            // tblassetsBindingSource9
-            // 
-            this.tblassetsBindingSource9.DataMember = "tbl_assets";
-            this.tblassetsBindingSource9.DataSource = this.dbset13;
-            // 
-            // tbl_assetsTableAdapter6
-            // 
-            this.tbl_assetsTableAdapter6.ClearBeforeFill = true;
-            // 
-            // vGrid_deployDetailsTableAdapter6
-            // 
-            this.vGrid_deployDetailsTableAdapter6.ClearBeforeFill = true;
-            // 
-            // vGrid_deployDetailsTableAdapter7
-            // 
-            this.vGrid_deployDetailsTableAdapter7.ClearBeforeFill = true;
             // 
             // tabPullout
             // 
@@ -2011,7 +1462,7 @@ namespace InventorySystem
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.Color.Navy;
+            this.tabPage4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.tabPage4.Controls.Add(this.btnViewpullSearch);
             this.tabPage4.Controls.Add(this.txtPulloutSearch);
             this.tabPage4.Controls.Add(this.dgv_viewPullout);
@@ -2051,33 +1502,219 @@ namespace InventorySystem
             this.dgv_viewPullout.Size = new System.Drawing.Size(1191, 596);
             this.dgv_viewPullout.TabIndex = 14;
             // 
-            // vGrid_ViewDetailsTableAdapter
+            // dbset44
             // 
-            this.vGrid_ViewDetailsTableAdapter.ClearBeforeFill = true;
+            this.dbset44.DataSetName = "dbset44";
+            this.dbset44.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // dbset24
+            // vGridassetsBindingSource
             // 
-            this.dbset24.DataSetName = "dbset24";
-            this.dbset24.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.vGridassetsBindingSource.DataMember = "vGrid_assets";
+            this.vGridassetsBindingSource.DataSource = this.dbset44;
             // 
-            // vGridViewDetailsBindingSource1
+            // vGrid_assetsTableAdapter
             // 
-            this.vGridViewDetailsBindingSource1.DataMember = "vGrid_ViewDetails";
-            this.vGridViewDetailsBindingSource1.DataSource = this.dbset24;
+            this.vGrid_assetsTableAdapter.ClearBeforeFill = true;
             // 
-            // vGrid_ViewDetailsTableAdapter1
+            // dbset45
             // 
-            this.vGrid_ViewDetailsTableAdapter1.ClearBeforeFill = true;
+            this.dbset45.DataSetName = "dbset45";
+            this.dbset45.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // vGrid_finalDeployViewDetailsTableAdapter
+            // vGridassetsBindingSource1
             // 
-            this.vGrid_finalDeployViewDetailsTableAdapter.ClearBeforeFill = true;
+            this.vGridassetsBindingSource1.DataMember = "vGrid_assets";
+            this.vGridassetsBindingSource1.DataSource = this.dbset45;
+            // 
+            // vGrid_assetsTableAdapter1
+            // 
+            this.vGrid_assetsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn9.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "category";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Category";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "brand";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Brand";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "specs";
+            this.dataGridViewTextBoxColumn12.HeaderText = "Specs";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            this.dataGridViewTextBoxColumn12.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "serial";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Serial";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Width = 150;
+            // 
+            // statusNameDataGridViewTextBoxColumn1
+            // 
+            this.statusNameDataGridViewTextBoxColumn1.DataPropertyName = "statusName";
+            this.statusNameDataGridViewTextBoxColumn1.HeaderText = "Status";
+            this.statusNameDataGridViewTextBoxColumn1.Name = "statusNameDataGridViewTextBoxColumn1";
+            this.statusNameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.statusNameDataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "remarks";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Remarks";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            this.dataGridViewTextBoxColumn14.Width = 200;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "date";
+            this.dataGridViewTextBoxColumn15.HeaderText = "Date";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            this.dataGridViewTextBoxColumn15.Width = 200;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataMember = "tbl_assets";
+            this.bindingSource1.DataSource = this.dbset45;
+            // 
+            // tbl_assetsTableAdapter1
+            // 
+            this.tbl_assetsTableAdapter1.ClearBeforeFill = true;
+            // 
+            // dbset46
+            // 
+            this.dbset46.DataSetName = "dbset46";
+            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vGridassetsBindingSource2
+            // 
+            this.vGridassetsBindingSource2.DataMember = "vGrid_assets";
+            this.vGridassetsBindingSource2.DataSource = this.dbset46;
+            // 
+            // vGrid_assetsTableAdapter2
+            // 
+            this.vGrid_assetsTableAdapter2.ClearBeforeFill = true;
+            // 
+            // action
+            // 
+            this.action.HeaderText = "Action";
+            this.action.Name = "action";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn16.HeaderText = "id";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // dataGridViewTextBoxColumn32
+            // 
+            this.dataGridViewTextBoxColumn32.DataPropertyName = "category";
+            this.dataGridViewTextBoxColumn32.HeaderText = "category";
+            this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
+            // 
+            // dataGridViewTextBoxColumn33
+            // 
+            this.dataGridViewTextBoxColumn33.DataPropertyName = "brand";
+            this.dataGridViewTextBoxColumn33.HeaderText = "brand";
+            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
+            // 
+            // dataGridViewTextBoxColumn34
+            // 
+            this.dataGridViewTextBoxColumn34.DataPropertyName = "specs";
+            this.dataGridViewTextBoxColumn34.HeaderText = "specs";
+            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
+            // 
+            // dataGridViewTextBoxColumn35
+            // 
+            this.dataGridViewTextBoxColumn35.DataPropertyName = "serial";
+            this.dataGridViewTextBoxColumn35.HeaderText = "serial";
+            this.dataGridViewTextBoxColumn35.Name = "dataGridViewTextBoxColumn35";
+            // 
+            // statusNameDataGridViewTextBoxColumn
+            // 
+            this.statusNameDataGridViewTextBoxColumn.DataPropertyName = "statusName";
+            this.statusNameDataGridViewTextBoxColumn.HeaderText = "statusName";
+            this.statusNameDataGridViewTextBoxColumn.Name = "statusNameDataGridViewTextBoxColumn";
+            // 
+            // dataGridViewTextBoxColumn36
+            // 
+            this.dataGridViewTextBoxColumn36.DataPropertyName = "remarks";
+            this.dataGridViewTextBoxColumn36.HeaderText = "remarks";
+            this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
+            // 
+            // dataGridViewTextBoxColumn40
+            // 
+            this.dataGridViewTextBoxColumn40.DataPropertyName = "oldUser";
+            this.dataGridViewTextBoxColumn40.HeaderText = "oldUser";
+            this.dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
+            // 
+            // tblusersBindingSource
+            // 
+            this.tblusersBindingSource.DataMember = "tbl_users";
+            this.tblusersBindingSource.DataSource = this.dbset46;
+            // 
+            // tbl_usersTableAdapter
+            // 
+            this.tbl_usersTableAdapter.ClearBeforeFill = true;
+            // 
+            // dataGridViewTextBoxColumn37
+            // 
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "id";
+            this.dataGridViewTextBoxColumn37.HeaderText = "id";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
+            this.dataGridViewTextBoxColumn37.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn38
+            // 
+            this.dataGridViewTextBoxColumn38.DataPropertyName = "fullName";
+            this.dataGridViewTextBoxColumn38.HeaderText = "fullName";
+            this.dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
+            this.dataGridViewTextBoxColumn38.ReadOnly = true;
+            // 
+            // btnDetails
+            // 
+            this.btnDetails.HeaderText = "Details";
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.ReadOnly = true;
+            this.btnDetails.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnDetails.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnDetails.Text = "View";
+            this.btnDetails.UseColumnTextForButtonValue = true;
+            // 
+            // btnRefreshDeployDetails
+            // 
+            this.btnRefreshDeployDetails.Location = new System.Drawing.Point(487, 13);
+            this.btnRefreshDeployDetails.Name = "btnRefreshDeployDetails";
+            this.btnRefreshDeployDetails.Size = new System.Drawing.Size(100, 39);
+            this.btnRefreshDeployDetails.TabIndex = 20;
+            this.btnRefreshDeployDetails.Text = "Refresh";
+            this.btnRefreshDeployDetails.UseVisualStyleBackColor = true;
+            this.btnRefreshDeployDetails.Click += new System.EventHandler(this.btnRefreshDeployDetails_Click);
             // 
             // dashboardMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Navy;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.ClientSize = new System.Drawing.Size(1350, 690);
             this.Controls.Add(this.p1);
             this.Controls.Add(this.gbInventory);
@@ -2147,54 +1784,26 @@ namespace InventorySystem
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vAssets)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDeploy)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployUserBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewDeployment)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridfinalDeployViewDetailsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset35)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridViewDetailsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset22)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset09)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftJoin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset01)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset02)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset03)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset07)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataset10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset12)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource9)).EndInit();
             this.tabPullout.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_viewPullout)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset24)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridViewDetailsBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblassetsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGriddeployDetailsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblDeploymentUserBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset44)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset45)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vGridassetsBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblusersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2264,68 +1873,21 @@ namespace InventorySystem
         private System.Windows.Forms.BindingSource tblDeploymentUserBindingSource;
         private tryDBDataSetTableAdapters.tbl_DeploymentUserTableAdapter tbl_DeploymentUserTableAdapter;
         private System.Windows.Forms.BindingSource tblDeploymentUserBindingSource1;
-        private db1 db1;
-        private System.Windows.Forms.BindingSource vGriddeployUserBindingSource;
-        private db1TableAdapters.vGrid_deployUserTableAdapter vGrid_deployUserTableAdapter;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource;
-        private db1TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource1;
+       
         private LeftJoin leftJoin;
         private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource2;
         private LeftJoinTableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewButtonColumn btnDetails;
         private System.Windows.Forms.DataGridView dgvViewDeployment;
-        private dbset01 dbset01;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource3;
-        private dbset01TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter2;
-        private dbset02 dbset02;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource4;
-        private dbset02TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter3;
-        private System.Windows.Forms.Button btnRefresh;
-        private dbset03 dbset03;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource5;
-        private dbset03TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter4;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource6;
-        private dataset07 dataset07;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource2;
-        private dataset07TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter1;
-        private dataset09 dataset09;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource3;
-        private dataset09TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter2;
-        private dataset10 dataset10;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource4;
-        private dataset10TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter3;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource7;
-        private dataset10TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter5;
+       
         private System.Windows.Forms.ComboBox txtNameDeploy;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private dbset11 dbset11;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource5;
-        private dbset11TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter4;
+        
         private System.Windows.Forms.BindingSource tblassetsBindingSource6;
         private System.Windows.Forms.BindingSource tblassetsBindingSource7;
         private System.Windows.Forms.DataGridView dgv_vAssets;
-        private dbset12 dbset12;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource8;
-        private dbset12TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter5;
-        private dbset13 dbset13;
-        private System.Windows.Forms.BindingSource tblassetsBindingSource9;
-        private dbset13TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter6;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource8;
-        private dbset13TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter6;
-        private dbset16 dbset16;
-        private System.Windows.Forms.BindingSource vGriddeployDetailsBindingSource9;
-        private dbset16TableAdapters.vGrid_deployDetailsTableAdapter vGrid_deployDetailsTableAdapter7;
+        
         private System.Windows.Forms.CheckBox chkSearch;
         private System.Windows.Forms.Button btnAssetsSearch;
         private System.Windows.Forms.TextBox txtAssetsSearch;
@@ -2357,17 +1919,11 @@ namespace InventorySystem
         private System.Windows.Forms.TabControl tabPullout;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dgv_viewPullout;
-        private dbset22 dbset22;
-        private System.Windows.Forms.BindingSource vGridViewDetailsBindingSource;
-        private dbset22TableAdapters.vGrid_ViewDetailsTableAdapter vGrid_ViewDetailsTableAdapter;
-        private dbset24 dbset24;
-        private System.Windows.Forms.BindingSource vGridViewDetailsBindingSource1;
-        private dbset24TableAdapters.vGrid_ViewDetailsTableAdapter vGrid_ViewDetailsTableAdapter1;
+       
         private System.Windows.Forms.Button btnViewpullSearch;
         private System.Windows.Forms.TextBox txtPulloutSearch;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblTotalPullout;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn action;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
@@ -2375,9 +1931,7 @@ namespace InventorySystem
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn oldUserDataGridViewTextBoxColumn1;
-        private dbset35 dbset35;
-        private System.Windows.Forms.BindingSource vGridfinalDeployViewDetailsBindingSource;
-        private dbset35TableAdapters.vGrid_finalDeployViewDetailsTableAdapter vGrid_finalDeployViewDetailsTableAdapter;
+       
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
@@ -2418,5 +1972,39 @@ namespace InventorySystem
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Label label23;
+        private dbset44 dbset44;
+        private System.Windows.Forms.BindingSource vGridassetsBindingSource;
+        private dbset44TableAdapters.vGrid_assetsTableAdapter vGrid_assetsTableAdapter;
+        private dbset45 dbset45;
+        private System.Windows.Forms.BindingSource vGridassetsBindingSource1;
+        private dbset45TableAdapters.vGrid_assetsTableAdapter vGrid_assetsTableAdapter1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusNameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private dbset45TableAdapters.tbl_assetsTableAdapter tbl_assetsTableAdapter1;
+        private dbset46 dbset46;
+        private System.Windows.Forms.BindingSource vGridassetsBindingSource2;
+        private dbset46TableAdapters.vGrid_assetsTableAdapter vGrid_assetsTableAdapter2;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn action;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn40;
+        private System.Windows.Forms.BindingSource tblusersBindingSource;
+        private dbset46TableAdapters.tbl_usersTableAdapter tbl_usersTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn38;
+        private System.Windows.Forms.DataGridViewButtonColumn btnDetails;
+        private System.Windows.Forms.Button btnRefreshDeployDetails;
     }
 }

@@ -22,10 +22,10 @@ namespace InventorySystem
             InitializeComponent();
         }
 
-        private void resign_Load(object sender, EventArgs e)
+        private void resign_Load (object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dbset37.tbl_users' table. You can move, or remove it, as needed.
-            this.tbl_usersTableAdapter.Fill(this.dbset37.tbl_users);
+           
             con.Open();
             string qryView = "SELECT id,fullName from tbl_users where isResign = 1";
             SqlCommand cmdView = new SqlCommand(qryView, con);

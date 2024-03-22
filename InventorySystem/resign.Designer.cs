@@ -36,12 +36,11 @@ namespace InventorySystem
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fullNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tblusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset37 = new InventorySystem.dbset37();
-            this.tbl_usersTableAdapter = new InventorySystem.dbset37TableAdapters.tbl_usersTableAdapter();
+            
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblusersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset37)).BeginInit();
+            
             this.SuspendLayout();
             // 
             // tblarchiveBindingSource
@@ -89,16 +88,11 @@ namespace InventorySystem
             // tblusersBindingSource
             // 
             this.tblusersBindingSource.DataMember = "tbl_users";
-            this.tblusersBindingSource.DataSource = this.dbset37;
+           
             // 
             // dbset37
             // 
-            this.dbset37.DataSetName = "dbset37";
-            this.dbset37.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tbl_usersTableAdapter
-            // 
-            this.tbl_usersTableAdapter.ClearBeforeFill = true;
+           
             // 
             // resign
             // 
@@ -114,7 +108,7 @@ namespace InventorySystem
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblusersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset37)).EndInit();
+           
             this.ResumeLayout(false);
 
         }
@@ -124,9 +118,9 @@ namespace InventorySystem
         private System.Windows.Forms.BindingSource tblarchiveBindingSource;
         private System.Windows.Forms.Button btnRestore;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private dbset37 dbset37;
+      
         private System.Windows.Forms.BindingSource tblusersBindingSource;
-        private dbset37TableAdapters.tbl_usersTableAdapter tbl_usersTableAdapter;
+       
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;
     }

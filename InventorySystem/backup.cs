@@ -68,6 +68,7 @@ namespace InventorySystem
                 Excel.Application excelApp4 = new Excel.Application();
                 Excel.Application excelApp5 = new Excel.Application();
                 Excel.Application excelApp6 = new Excel.Application();
+                Excel.Application excelApp7 = new Excel.Application();
 
                 try
                 {
@@ -78,6 +79,7 @@ namespace InventorySystem
                     Excel.Workbook workbook4 = excelApp4.Workbooks.Open(excelFilePath);
                     Excel.Workbook workbook5 = excelApp5.Workbooks.Open(excelFilePath);
                     Excel.Workbook workbook6 = excelApp6.Workbooks.Open(excelFilePath);
+                    Excel.Workbook workbook7 = excelApp7.Workbooks.Open(excelFilePath);
 
                     Worksheet worksheet = workbook.Sheets[1];
                     Worksheet worksheet2 = workbook2.Sheets[2];
@@ -85,6 +87,7 @@ namespace InventorySystem
                     Worksheet worksheet4 = workbook4.Sheets[4];
                     Worksheet worksheet5 = workbook5.Sheets[5];
                     Worksheet worksheet6 = workbook6.Sheets[6];
+                    Worksheet worksheet7 = workbook7.Sheets[7];
 
                     Range range = worksheet.UsedRange;
                     Range range2 = worksheet2.UsedRange;
@@ -92,12 +95,53 @@ namespace InventorySystem
                     Range range4 = worksheet4.UsedRange;
                     Range range5 = worksheet5.UsedRange;
                     Range range6 = worksheet6.UsedRange;
+                    Range range7 = worksheet7.UsedRange;
 
 
 
                     // SQL Connection
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
+                        string globalstatus = null;
+
+                        //tbl_status
+                        connection.Open();
+                        for (int row7 = 2; row7 <= range7.Rows.Count; row7++)
+                        {
+                            //// Check if the fullName already exists
+                            //string qrygetStatus = "SELECT status FROM tbl_assets WHERE status = @status";
+                            //SqlCommand cmdgetStatus = new SqlCommand(qrygetStatus, connection);
+                            ////cmdgetStatus.Parameters.AddWithValue("@status", status);
+                            
+
+                            string status = ((Range)range7.Cells[row7, 2]).Value?.ToString() ?? "";
+                            string statusName = ((Range)range7.Cells[row7, 3]).Value?.ToString() ?? "";
+                            globalstatus = status;
+
+                            // Check if the fullName already exists
+                            string checkQuerystatus = "SELECT * FROM tbl_status WHERE statusName = @statusName";
+                            SqlCommand checkCmdstatus = new SqlCommand(checkQuerystatus, connection);
+                            checkCmdstatus.Parameters.AddWithValue("@statusName", statusName);
+                            int existingCountstatus = (int)checkCmdstatus.ExecuteScalar();
+
+                            if (existingCountstatus < 1)
+                            {
+                                connection.Close();
+                                connection.Open();
+                                string qrystatus = "INSERT INTO tbl_status (status,statusName) VALUES (@status, @statusName)";
+                                SqlCommand cmdstatus = new SqlCommand(qrystatus, connection);
+                                cmdstatus.Parameters.AddWithValue("@status", status);
+                                cmdstatus.Parameters.AddWithValue("@statusName", statusName);
+                                cmdstatus.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                connection.Close();
+                                connection.Open();
+                            }
+                        }
+                        connection.Close();
+                        
                         //tblDeployDetails
                         connection.Open();
                         for (int row2 = 2; row2 <= range2.Rows.Count; row2++)
@@ -145,7 +189,7 @@ namespace InventorySystem
                             SqlCommand checkCmd = new SqlCommand(checkQuery, connection);
                             checkCmd.Parameters.AddWithValue("@fullName", fullName);
                             int existingCount = (int)checkCmd.ExecuteScalar();
-                            
+
                             if (existingCount > 0)
                             {
                                 connection.Close();
@@ -171,10 +215,26 @@ namespace InventorySystem
                         connection.Close();
 
                         //tbl_assets
-                        connection.Open();
+                        
                         // Loop through Excel data and insert into SQL Server
                         for (int row = 2; row <= range.Rows.Count; row++)
                         {
+                            con.Open();
+                            string qrygetstatusName = "SELECT id from tbl_status where status = @status";
+                            SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
+                            cmdstatusName.Parameters.AddWithValue("@status", globalstatus);
+                            SqlDataReader checker = cmdstatusName.ExecuteReader();
+
+                            int globalstatusID = 0;
+                            while (checker.Read())
+                            {
+                                int statusID1 = (int)checker["id"];
+                                globalstatusID = statusID1;
+                            }
+                            checker.Close();
+                            con.Close();
+
+
                             // Assuming the first column contains the data to be inserted
 
                             string stringID = ((Range)range.Cells[row, 1]).Value?.ToString(); // Using ?. to handle null
@@ -197,15 +257,18 @@ namespace InventorySystem
                             string pullOutID = ((Range)range.Cells[row, 12]).Value?.ToString() ?? "";
                             int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
 
+                            string statusID = ((Range)range.Cells[row, 14]).Value?.ToString() ?? "";
+                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+
                             string oldUser = ((Range)range.Cells[row, 13]).Value?.ToString() ?? "";
 
+                            connection.Open();
                             if (deployID == "" && userID == "")
                             {
-                                connection.Close();
-                                connection.Open();
+                               
                                 // SQL Insert command
                                 string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser)";
+                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
                                 SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
                                 commanddeploID.Parameters.AddWithValue("@cat", cat);
                                 commanddeploID.Parameters.AddWithValue("@brand", brand);
@@ -216,15 +279,15 @@ namespace InventorySystem
                                 commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
                                 commanddeploID.Parameters.AddWithValue("@action", action);
                                 commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                commanddeploID.Parameters.AddWithValue("@statusID", globalstatusID);
                                 commanddeploID.ExecuteNonQuery();
+                                
                             }
                             else
                             {
                                 // SQL Insert command
-                                connection.Close();
-                                connection.Open();
                                 string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser)";
+                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
                                 SqlCommand command = new SqlCommand(insertCommand, connection);
                                 command.Parameters.AddWithValue("@cat", cat);
                                 command.Parameters.AddWithValue("@brand", brand);
@@ -238,10 +301,13 @@ namespace InventorySystem
                                 command.Parameters.AddWithValue("@userID", userid);
                                 command.Parameters.AddWithValue("@pullOutID", pulloutid);
                                 command.Parameters.AddWithValue("@oldUser", oldUser);
+                                command.Parameters.AddWithValue("@statusID", globalstatusID);
                                 command.ExecuteNonQuery();
+                                
                             }
+                            connection.Close();
                         }
-                        connection.Close();
+                       
 
                         //tbl_archive
                         connection.Open();
@@ -258,7 +324,10 @@ namespace InventorySystem
                             string astatus = ((Range)range4.Cells[row4, 8]).Value?.ToString() ?? "";
                             string aremarks = ((Range)range4.Cells[row4, 9]).Value?.ToString() ?? "";
 
-                            string qryIarchive = "INSERT INTO tbl_archive (setID,dateDelete,category,brand,specs,serial,status,remarks) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks)";
+                            string statusID = ((Range)range4.Cells[row4, 10]).Value?.ToString() ?? "";
+                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+
+                            string qryIarchive = "INSERT INTO tbl_archive (setID,dateDelete,category,brand,specs,serial,status,remarks,statusID) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks,@statusID)";
                             SqlCommand cmdIarchive = new SqlCommand(qryIarchive, connection);
                             cmdIarchive.Parameters.AddWithValue("@setID", setID);
                             cmdIarchive.Parameters.AddWithValue("@dateDelete", aDate);
@@ -268,7 +337,10 @@ namespace InventorySystem
                             cmdIarchive.Parameters.AddWithValue("@serial", aserail);
                             cmdIarchive.Parameters.AddWithValue("@status", astatus);
                             cmdIarchive.Parameters.AddWithValue("@remarks", aremarks);
+                            cmdIarchive.Parameters.AddWithValue("@statusID", statusid);
                             cmdIarchive.ExecuteNonQuery();
+                            connection.Close();
+                            connection.Open();
                         }
                         connection.Close();
 
@@ -301,6 +373,8 @@ namespace InventorySystem
                             }
                         }
                         connection.Close();
+
+                        
                         MessageBox.Show("SULIT! Data Imported Successfully!");
                     }
                     workbook.Close(false);
@@ -320,6 +394,9 @@ namespace InventorySystem
 
                     workbook6.Close(false);
                     Marshal.ReleaseComObject(workbook6);
+
+                    workbook7.Close(false);
+                    Marshal.ReleaseComObject(workbook7);
                 }
                 catch (Exception ex)
                 {
@@ -340,9 +417,18 @@ namespace InventorySystem
 
                     excelApp4.Quit();
                     Marshal.ReleaseComObject(excelApp4);
+
+                    excelApp5.Quit();
+                    Marshal.ReleaseComObject(excelApp5);
+
+                    excelApp6.Quit();
+                    Marshal.ReleaseComObject(excelApp6);
+
+                    excelApp7.Quit();
+                    Marshal.ReleaseComObject(excelApp7);
                 }
             }
-                refresh();
+            refresh();
         }
         void refresh()
         {
@@ -366,7 +452,7 @@ namespace InventorySystem
             string connectionString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True";
 
             // Tables to backup
-            string[] tables = {"tbl_assets", "tbl_deployDetails", "tbl_users", "tbl_archive", "tbl_category", "tbl_pulloutDetails" }; // Add your table names here
+            string[] tables = {"tbl_assets", "tbl_deployDetails", "tbl_users", "tbl_archive", "tbl_category", "tbl_pulloutDetails", "tbl_status" }; // Add your table names here
 
             // Create a new Excel file
             // Export data to Excel
