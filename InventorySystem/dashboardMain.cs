@@ -57,7 +57,7 @@ namespace InventorySystem
             btnDashboard.BackColor = Color.FromArgb(8, 71, 124);
             btnDashboard.ForeColor = Color.FromArgb(252, 219, 4);
 
-
+            //Tooltip
             tipAssetsSearch.SetToolTip(btnAssetsSearch, "Search/Clear");
 
             //Dashboard
