@@ -53,6 +53,10 @@ namespace InventorySystem
             //(8, 71, 124); up
             //color = yellow CVM = Color.FromArgb(252, 219, 4);
 
+            //Default active button dashboard
+            btnDashboard.BackColor = Color.FromArgb(8, 71, 124);
+            btnDashboard.ForeColor = Color.FromArgb(252, 219, 4);
+
 
             tipAssetsSearch.SetToolTip(btnAssetsSearch, "Search/Clear");
 
