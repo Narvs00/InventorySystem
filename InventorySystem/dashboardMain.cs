@@ -141,6 +141,7 @@ namespace InventorySystem
             disabler();
             clear();
 
+            //
             //reset btn on inventory
             btnAdd.Enabled = true;
             btnEdit.Enabled = true;
