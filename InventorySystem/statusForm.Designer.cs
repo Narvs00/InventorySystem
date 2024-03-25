@@ -29,6 +29,7 @@ namespace InventorySystem
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(statusForm));
             this.txtStatusName = new System.Windows.Forms.TextBox();
             this.btnAddCategory = new System.Windows.Forms.Button();
@@ -36,7 +37,18 @@ namespace InventorySystem
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dbset46 = new InventorySystem.dbset46();
+            this.tblstatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_statusTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_statusTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblstatusBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStatusName
@@ -50,7 +62,7 @@ namespace InventorySystem
             // btnAddCategory
             // 
             this.btnAddCategory.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddCategory.Location = new System.Drawing.Point(281, 251);
+            this.btnAddCategory.Location = new System.Drawing.Point(281, 229);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(67, 33);
             this.btnAddCategory.TabIndex = 23;
@@ -87,7 +99,7 @@ namespace InventorySystem
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 238);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 16);
+            this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 26;
             this.label1.Text = "Select Status :";
             // 
@@ -97,15 +109,75 @@ namespace InventorySystem
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 267);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 16);
+            this.label2.Size = new System.Drawing.Size(104, 16);
             this.label2.TabIndex = 27;
             this.label2.Text = "Status Name :";
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(281, 268);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 33);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.statusNameDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.tblstatusBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 307);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(336, 190);
+            this.dataGridView1.TabIndex = 29;
+            // 
+            // dbset46
+            // 
+            this.dbset46.DataSetName = "dbset46";
+            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblstatusBindingSource
+            // 
+            this.tblstatusBindingSource.DataMember = "tbl_status";
+            this.tblstatusBindingSource.DataSource = this.dbset46;
+            // 
+            // tbl_statusTableAdapter
+            // 
+            this.tbl_statusTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // statusNameDataGridViewTextBoxColumn
+            // 
+            this.statusNameDataGridViewTextBoxColumn.DataPropertyName = "statusName";
+            this.statusNameDataGridViewTextBoxColumn.HeaderText = "statusName";
+            this.statusNameDataGridViewTextBoxColumn.Name = "statusNameDataGridViewTextBoxColumn";
             // 
             // statusForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(360, 320);
+            this.ClientSize = new System.Drawing.Size(360, 509);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbStatus);
@@ -115,7 +187,11 @@ namespace InventorySystem
             this.Name = "statusForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Status";
+            this.Load += new System.EventHandler(this.statusForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblstatusBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +204,13 @@ namespace InventorySystem
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private dbset46 dbset46;
+        private System.Windows.Forms.BindingSource tblstatusBindingSource;
+        private dbset46TableAdapters.tbl_statusTableAdapter tbl_statusTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusNameDataGridViewTextBoxColumn;
     }
 }

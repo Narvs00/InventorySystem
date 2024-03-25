@@ -25,6 +25,8 @@ namespace InventorySystem
        
         private void newCat_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'dbset46.tbl_category' table. You can move, or remove it, as needed.
+            this.tbl_categoryTableAdapter.Fill(this.dbset46.tbl_category);
 
         }
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -55,8 +57,7 @@ namespace InventorySystem
                         MessageBox.Show("Added successful!");
                         con.Close();
                         txtNewCat.Clear();
-
-
+                        refreshgridCat();
                     }
                     else
                     {
@@ -79,6 +80,39 @@ namespace InventorySystem
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                string ID = selectedRow.Cells[0].Value.ToString();
+                int id = Convert.ToInt32(ID);
+
+                con.Open();
+                string qry1 = "DELETE FROM tbl_category WHERE id = @id";
+                SqlCommand cmd1 = new SqlCommand(qry1, con);
+                cmd1.Parameters.AddWithValue("@id", id);
+                cmd1.ExecuteNonQuery();
+                con.Close();
+
+                MessageBox.Show("Remove Successfully");
+                refreshgridCat();
+            }
+        }
+        void refreshgridCat()
+        {
+            con.Open();
+            string qry1 = "SELECT * from tbl_category";
+            SqlCommand cmd1 = new SqlCommand(qry1, con);
+            cmd1.CommandText = qry1;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd1);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            con.Close();
         }
     }
 }
