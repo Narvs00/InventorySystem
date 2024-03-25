@@ -135,18 +135,7 @@ namespace InventorySystem
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string qry = "SELECT id,category,brand,specs,serial,remarks,dateDeploy,oldUser from vGrid_ViewDetails where setID = @setID AND action = 1";
-            SqlCommand cmd = new SqlCommand(qry, con);
-            cmd.Parameters.AddWithValue("@setID", uid);
-
-            cmd.ExecuteNonQuery();
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgv_empAssets.DataSource = dt;
-            con.Close();
+           
         }
 
         private void dgv_empAssets_CellContentClick(object sender, DataGridViewCellEventArgs e)

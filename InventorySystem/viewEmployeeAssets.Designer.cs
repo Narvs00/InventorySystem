@@ -30,7 +30,6 @@ namespace InventorySystem
         private void InitializeComponent()
         {
             this.dgv_empAssets = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnResign = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_empAssets)).BeginInit();
@@ -46,16 +45,6 @@ namespace InventorySystem
             this.dgv_empAssets.Size = new System.Drawing.Size(776, 397);
             this.dgv_empAssets.TabIndex = 0;
             this.dgv_empAssets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_empAssets_CellContentClick);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Location = new System.Drawing.Point(174, 12);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // button2
             // 
@@ -85,7 +74,6 @@ namespace InventorySystem
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnResign);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.dgv_empAssets);
             this.Name = "viewEmployeeAssets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -99,7 +87,6 @@ namespace InventorySystem
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_empAssets;
-        private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnResign;
     }

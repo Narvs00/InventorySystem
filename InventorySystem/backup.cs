@@ -238,46 +238,55 @@ namespace InventorySystem
 
                                             connection.Close();
                                             connection.Open();
-                                            if (deployID == "" && userID == "")
-                                            {
-                                                // SQL Insert command
-                                                string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
-                                                SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
-                                                commanddeploID.Parameters.AddWithValue("@cat", cat);
-                                                commanddeploID.Parameters.AddWithValue("@brand", brand);
-                                                commanddeploID.Parameters.AddWithValue("@specs", specs);
-                                                commanddeploID.Parameters.AddWithValue("@serial", serial);
-                                                commanddeploID.Parameters.AddWithValue("@status", statusexcel);
-                                                commanddeploID.Parameters.AddWithValue("@remarks", remarks);
-                                                commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
-                                                commanddeploID.Parameters.AddWithValue("@action", action);
-                                                commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
-                                                commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
-                                                commanddeploID.ExecuteNonQuery();
+                                            if (statusexcel != "" && cat != "") {
+                                    
+                                
+                                                if (deployID == "" && userID == "")
+                                                {
+                                                    // SQL Insert command
+                                                    string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                    string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
+                                                    SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
+                                                    commanddeploID.Parameters.AddWithValue("@cat", cat);
+                                                    commanddeploID.Parameters.AddWithValue("@brand", brand);
+                                                    commanddeploID.Parameters.AddWithValue("@specs", specs);
+                                                    commanddeploID.Parameters.AddWithValue("@serial", serial);
+                                                    commanddeploID.Parameters.AddWithValue("@status", statusexcel);
+                                                    commanddeploID.Parameters.AddWithValue("@remarks", remarks);
+                                                    commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
+                                                    commanddeploID.Parameters.AddWithValue("@action", action);
+                                                    commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                                    commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
+                                                    commanddeploID.ExecuteNonQuery();
+                                                }
+                                                else
+                                                {
+                                                    // SQL Insert command
+                                                    string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                                    string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
+                                                    SqlCommand command = new SqlCommand(insertCommand, connection);
+                                                    command.Parameters.AddWithValue("@cat", cat);
+                                                    command.Parameters.AddWithValue("@brand", brand);
+                                                    command.Parameters.AddWithValue("@specs", specs);
+                                                    command.Parameters.AddWithValue("@serial", serial);
+                                                    command.Parameters.AddWithValue("@status", status);
+                                                    command.Parameters.AddWithValue("@remarks", remarks);
+                                                    command.Parameters.AddWithValue("@date", dateTime);
+                                                    command.Parameters.AddWithValue("@action", action);
+                                                    command.Parameters.AddWithValue("@deployID", deployid);
+                                                    command.Parameters.AddWithValue("@userID", userid);
+                                                    command.Parameters.AddWithValue("@pullOutID", pulloutid);
+                                                    command.Parameters.AddWithValue("@oldUser", oldUser);
+                                                    command.Parameters.AddWithValue("@statusID", statusID1);
+                                                    command.ExecuteNonQuery();
+
+                                                }
                                             }
                                             else
                                             {
-                                                // SQL Insert command
-                                                string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
-                                                SqlCommand command = new SqlCommand(insertCommand, connection);
-                                                command.Parameters.AddWithValue("@cat", cat);
-                                                command.Parameters.AddWithValue("@brand", brand);
-                                                command.Parameters.AddWithValue("@specs", specs);
-                                                command.Parameters.AddWithValue("@serial", serial);
-                                                command.Parameters.AddWithValue("@status", status);
-                                                command.Parameters.AddWithValue("@remarks", remarks);
-                                                command.Parameters.AddWithValue("@date", dateTime);
-                                                command.Parameters.AddWithValue("@action", action);
-                                                command.Parameters.AddWithValue("@deployID", deployid);
-                                                command.Parameters.AddWithValue("@userID", userid);
-                                                command.Parameters.AddWithValue("@pullOutID", pulloutid);
-                                                command.Parameters.AddWithValue("@oldUser", oldUser);
-                                                command.Parameters.AddWithValue("@statusID", statusID1);
-                                                command.ExecuteNonQuery();
-
+                                                 MessageBox.Show("SULIT! No assets added");
                                             }
+                                           
                                             connection.Close();
                             }
                             else
@@ -309,7 +318,10 @@ namespace InventorySystem
                                             checker.Close();
                                             con.Close();
 
-                                            // Assuming the first column contains the data to be inserted
+                                    // Assuming the first column contains the data to be inserted
+                                            string ID = ((Range)range.Cells[row7, 1]).Value?.ToString() ?? "";
+                                            int id = string.IsNullOrEmpty(ID) ? 0 : Convert.ToInt32(ID);
+
                                             string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
                                             string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
                                             string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
@@ -332,52 +344,52 @@ namespace InventorySystem
 
                                             string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
 
+                                            
                                             connection.Close();
                                             connection.Open();
-                                            if (deployID == "" && userID == "")
-                                            {
-                                                // SQL Insert command
-                                                string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
-                                                SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
-                                                commanddeploID.Parameters.AddWithValue("@cat", cat);
-                                                commanddeploID.Parameters.AddWithValue("@brand", brand);
-                                                commanddeploID.Parameters.AddWithValue("@specs", specs);
-                                                commanddeploID.Parameters.AddWithValue("@serial", serial);
-                                                commanddeploID.Parameters.AddWithValue("@status", statusexcel);
-                                                commanddeploID.Parameters.AddWithValue("@remarks", remarks);
-                                                commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
-                                                commanddeploID.Parameters.AddWithValue("@action", action);
-                                                commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
-                                                commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
-                                                commanddeploID.ExecuteNonQuery();
-                                            }
-                                            else
-                                            {
-                                                // SQL Insert command
-                                                string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
-                                                SqlCommand command = new SqlCommand(insertCommand, connection);
-                                                command.Parameters.AddWithValue("@cat", cat);
-                                                command.Parameters.AddWithValue("@brand", brand);
-                                                command.Parameters.AddWithValue("@specs", specs);
-                                                command.Parameters.AddWithValue("@serial", serial);
-                                                command.Parameters.AddWithValue("@status", status);
-                                                command.Parameters.AddWithValue("@remarks", remarks);
-                                                command.Parameters.AddWithValue("@date", dateTime);
-                                                command.Parameters.AddWithValue("@action", action);
-                                                command.Parameters.AddWithValue("@deployID", deployid);
-                                                command.Parameters.AddWithValue("@userID", userid);
-                                                command.Parameters.AddWithValue("@pullOutID", pulloutid);
-                                                command.Parameters.AddWithValue("@oldUser", oldUser);
-                                                command.Parameters.AddWithValue("@statusID", statusID1);
-                                                command.ExecuteNonQuery();
 
-                                            }
+                                   
+                                        if (deployID == "" && userID == "")
+                                        {
+                                            // SQL Insert command
+                                            string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                            string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
+                                            SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
+                                            commanddeploID.Parameters.AddWithValue("@cat", cat);
+                                            commanddeploID.Parameters.AddWithValue("@brand", brand);
+                                            commanddeploID.Parameters.AddWithValue("@specs", specs);
+                                            commanddeploID.Parameters.AddWithValue("@serial", serial);
+                                            commanddeploID.Parameters.AddWithValue("@status", statusexcel);
+                                            commanddeploID.Parameters.AddWithValue("@remarks", remarks);
+                                            commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
+                                            commanddeploID.Parameters.AddWithValue("@action", action);
+                                            commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                            commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
+                                            commanddeploID.ExecuteNonQuery();
+                                        }
+                                        else
+                                        {
+                                            // SQL Insert command
+                                            string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                            string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
+                                            SqlCommand command = new SqlCommand(insertCommand, connection);
+                                            command.Parameters.AddWithValue("@cat", cat);
+                                            command.Parameters.AddWithValue("@brand", brand);
+                                            command.Parameters.AddWithValue("@specs", specs);
+                                            command.Parameters.AddWithValue("@serial", serial);
+                                            command.Parameters.AddWithValue("@status", status);
+                                            command.Parameters.AddWithValue("@remarks", remarks);
+                                            command.Parameters.AddWithValue("@date", dateTime);
+                                            command.Parameters.AddWithValue("@action", action);
+                                            command.Parameters.AddWithValue("@deployID", deployid);
+                                            command.Parameters.AddWithValue("@userID", userid);
+                                            command.Parameters.AddWithValue("@pullOutID", pulloutid);
+                                            command.Parameters.AddWithValue("@oldUser", oldUser);
+                                            command.Parameters.AddWithValue("@statusID", statusID1);
+                                            command.ExecuteNonQuery();
+                                        }
                                             connection.Close();
-                                           
                                 }
-                                
                             }
                             connection.Open();
                         }
@@ -401,20 +413,31 @@ namespace InventorySystem
                             string statusID = ((Range)range4.Cells[row4, 10]).Value?.ToString() ?? "";
                             int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
 
-                            string qryIarchive = "INSERT INTO tbl_archive (setID,dateDelete,category,brand,specs,serial,status,remarks,statusID) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks,@statusID)";
-                            SqlCommand cmdIarchive = new SqlCommand(qryIarchive, connection);
-                            cmdIarchive.Parameters.AddWithValue("@setID", setID);
-                            cmdIarchive.Parameters.AddWithValue("@dateDelete", aDate);
-                            cmdIarchive.Parameters.AddWithValue("@category", acategory);
-                            cmdIarchive.Parameters.AddWithValue("@brand", abrand);
-                            cmdIarchive.Parameters.AddWithValue("@specs", aspecs);
-                            cmdIarchive.Parameters.AddWithValue("@serial", aserail);
-                            cmdIarchive.Parameters.AddWithValue("@status", astatus);
-                            cmdIarchive.Parameters.AddWithValue("@remarks", aremarks);
-                            cmdIarchive.Parameters.AddWithValue("@statusID", statusid);
-                            cmdIarchive.ExecuteNonQuery();
-                            connection.Close();
-                            connection.Open();
+                            string checkQuerystatus = "SELECT COUNT(*) FROM tbl_archive WHERE setID = @setID";
+                            SqlCommand checkCmdstatus = new SqlCommand(checkQuerystatus, connection);
+                            checkCmdstatus.Parameters.AddWithValue("@setID", setID);
+                            int existingCountstatus = (int)checkCmdstatus.ExecuteScalar();
+
+                            if (existingCountstatus > 0) {
+                               //...
+                            }
+                            else
+                            {
+                                string qryIarchive = "INSERT INTO tbl_archive (setID,dateDelete,category,brand,specs,serial,status,remarks,statusID) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks,@statusID)";
+                                SqlCommand cmdIarchive = new SqlCommand(qryIarchive, connection);
+                                cmdIarchive.Parameters.AddWithValue("@setID", setID);
+                                cmdIarchive.Parameters.AddWithValue("@dateDelete", aDate);
+                                cmdIarchive.Parameters.AddWithValue("@category", acategory);
+                                cmdIarchive.Parameters.AddWithValue("@brand", abrand);
+                                cmdIarchive.Parameters.AddWithValue("@specs", aspecs);
+                                cmdIarchive.Parameters.AddWithValue("@serial", aserail);
+                                cmdIarchive.Parameters.AddWithValue("@status", astatus);
+                                cmdIarchive.Parameters.AddWithValue("@remarks", aremarks);
+                                cmdIarchive.Parameters.AddWithValue("@statusID", statusid);
+                                cmdIarchive.ExecuteNonQuery();
+                                connection.Close();
+                                connection.Open();
+                            }
                         }
                         connection.Close();
 

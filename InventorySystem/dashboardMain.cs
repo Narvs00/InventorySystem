@@ -378,10 +378,14 @@ namespace InventorySystem
 
             if (dataGridView1.SelectedRows.Count > 0)
             {
+                DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
+                id = selectedRow.Cells[0].Value.ToString();
+
                 con.Open();
-                string qryselectRow = "SELECT * from tbl_assets where action = @action";
+                string qryselectRow = "SELECT * from tbl_assets where action = @action AND id = @id";
                 SqlCommand cmdselectRow = new SqlCommand(qryselectRow, con);
-                cmdselectRow.Parameters.AddWithValue("action", 1);
+                cmdselectRow.Parameters.AddWithValue("@action", 1);
+                cmdselectRow.Parameters.AddWithValue("@id", id);
                 SqlDataReader checkerAction = cmdselectRow.ExecuteReader();
                 
 
@@ -389,6 +393,13 @@ namespace InventorySystem
                 if (checkerAction.HasRows)
                 {
                     MessageBox.Show("Selected asset is currently deployed!");
+                    btnDelete.BackColor = Color.White;
+                    btnDelete.ForeColor = Color.Black;
+
+                    btnAdd.Enabled = true;
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+
                 }
                 else
                 {
@@ -542,6 +553,8 @@ namespace InventorySystem
             {
                 if (dataGridView1.SelectedRows.Count > 0)
                 {
+
+
                     DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
                     id = selectedRow.Cells[0].Value.ToString();
                     cat = selectedRow.Cells[1].Value.ToString();
@@ -550,11 +563,33 @@ namespace InventorySystem
                     serial = selectedRow.Cells[4].Value.ToString();
                     status = selectedRow.Cells[5].Value.ToString();
                     remarks = selectedRow.Cells[6].Value.ToString();
+                    remarks = selectedRow.Cells[6].Value.ToString();
+
+                    con.Open();
+                    string qrygetstatusID = "Select * from tbl_status where statusName = @statusName";
+                    SqlCommand cmdgetstatusID = new SqlCommand(qrygetstatusID, con);
+                    cmdgetstatusID.Parameters.AddWithValue("statusName", status);
+                    SqlDataReader sdrstatusID = cmdgetstatusID.ExecuteReader();
+
+                    int statusid1 = 0;
+                    string statusMain1 = null;
+                    while (sdrstatusID.Read())
+                    {
+                        int statusID = (int)sdrstatusID["id"];
+                        string statusMain = (string)sdrstatusID["status"];
+
+                        statusid1 = statusID;
+                        statusMain1 = statusMain;
+                    }
+                    sdrstatusID.Close();
+                    con.Close();
+
+
 
                     con.Open();
                     string dateTime = DateTime.Now.ToString("MM / dd / yyyy");
 
-                    string qry = "INSERT INTO tbl_archive(setID,dateDelete,category,brand,specs,serial,status,remarks) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks)";
+                    string qry = "INSERT INTO tbl_archive(setID,dateDelete,category,brand,specs,serial,status,remarks,statusID) VALUES (@setID,@dateDelete,@category,@brand,@specs,@serial,@status,@remarks,@statusID)";
                     SqlCommand cmd = new SqlCommand(qry, con);
 
                     cmd.Parameters.AddWithValue("@setID", id);
@@ -565,6 +600,7 @@ namespace InventorySystem
                     cmd.Parameters.AddWithValue("@serial", serial);
                     cmd.Parameters.AddWithValue("@status", status);
                     cmd.Parameters.AddWithValue("@remarks", remarks);
+                    cmd.Parameters.AddWithValue("@statusID", statusid1);
 
 
                     int rowsAffected = cmd.ExecuteNonQuery();
