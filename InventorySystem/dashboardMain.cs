@@ -35,7 +35,7 @@ namespace InventorySystem
         public dashboardMain()
         {
             InitializeComponent();
-    }
+        }
 
         private void dashboardMain_Load(object sender, EventArgs e)
         {
@@ -356,12 +356,12 @@ namespace InventorySystem
                 DataGridViewRow selectedRow = dataGridView1.SelectedRows[0];
 
                 id = selectedRow.Cells[0].Value.ToString();
-                cbCategory.Text = selectedRow.Cells[2].Value.ToString();
-                txtBrand.Text = selectedRow.Cells[3].Value.ToString();
-                txtSpecs.Text = selectedRow.Cells[4].Value.ToString();
-                txtSerial.Text = selectedRow.Cells[5].Value.ToString();
-                cbStatus.Text = selectedRow.Cells[6].Value.ToString();
-                rRemarks.Text = selectedRow.Cells[7].Value.ToString();
+                cbCategory.Text = selectedRow.Cells[1].Value.ToString();
+                txtBrand.Text = selectedRow.Cells[2].Value.ToString();
+                txtSpecs.Text = selectedRow.Cells[3].Value.ToString();
+                txtSerial.Text = selectedRow.Cells[4].Value.ToString();
+                cbStatus.Text = selectedRow.Cells[5].Value.ToString();
+                rRemarks.Text = selectedRow.Cells[6].Value.ToString();
             }
         }
 
@@ -533,6 +533,7 @@ namespace InventorySystem
                     refreshDGVassets();
                     clear();
                 }
+                con.Close();
             }
 
             if (setDelete == "delete")
