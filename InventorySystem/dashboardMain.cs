@@ -395,6 +395,7 @@ namespace InventorySystem
                     if (dialogResult == DialogResult.Yes)
                     {
                         setDelete = "delete";
+                        MessageBox.Show("SULIT! Click Inventory OK button to continue");
                     }
                     else if (dialogResult == DialogResult.No)
                     {
