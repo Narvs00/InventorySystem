@@ -38,7 +38,7 @@ namespace InventorySystem
                 cmd.ExecuteNonQuery();
                 con.Close();
 
-                cbStatus = null;
+                cbStatus.Text = "";
                 txtStatusName.Clear();
 
                 MessageBox.Show("Sulit! Status added successfully");

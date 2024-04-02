@@ -102,43 +102,6 @@ namespace InventorySystem
                     // SQL Connection
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
-                        
-                        
-                        //tblDeployDetails
-                        connection.Open();
-                        for (int row2 = 2; row2 <= range2.Rows.Count; row2++)
-                        {
-                            string dateDeploy = ((Range)range2.Cells[row2, 2]).Value?.ToString() ?? "";
-                            string oldUser = ((Range)range2.Cells[row2, 3]).Value?.ToString() ?? "";
-                            string userID = ((Range)range2.Cells[row2, 4]).Value?.ToString() ?? "";
-                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
-
-                            string qryDeploy = "INSERT INTO tbl_deployDetails (dateDeploy,oldUser,setID) VALUES (@dateDeploy,@oldUser,@setID)";
-                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
-                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
-                            cmdDeploy.Parameters.AddWithValue("@oldUser", oldUser);
-                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
-                            cmdDeploy.ExecuteNonQuery();
-                        }
-                        connection.Close();
-
-                        //tbl_pulloutDetails
-                        connection.Open();
-                        for (int row6 = 2; row6 <= range6.Rows.Count; row6++)
-                        {
-                            string dateDeploy = ((Range)range6.Cells[row6, 2]).Value?.ToString() ?? "";
-                            string userID = ((Range)range6.Cells[row6, 3]).Value?.ToString() ?? "";
-                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
-
-                            string qryDeploy = "INSERT INTO tbl_pulloutDetails (datePullout,userID) VALUES (@dateDeploy,@setID)";
-                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
-                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
-                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
-                            cmdDeploy.ExecuteNonQuery();
-                        }
-                        connection.Close();
-
-
                         //tbl_users
                         connection.Open();
                         for (int row3 = 2; row3 <= range3.Rows.Count; row3++)
@@ -175,6 +138,43 @@ namespace InventorySystem
                             }
                         }
                         connection.Close();
+
+                        //tblDeployDetails
+                        connection.Open();
+                        for (int row2 = 2; row2 <= range2.Rows.Count; row2++)
+                        {
+                            string dateDeploy = ((Range)range2.Cells[row2, 2]).Value?.ToString() ?? "";
+                            string oldUser = ((Range)range2.Cells[row2, 3]).Value?.ToString() ?? "";
+                            string userID = ((Range)range2.Cells[row2, 4]).Value?.ToString() ?? "";
+                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+
+                            string qryDeploy = "INSERT INTO tbl_deployDetails (dateDeploy,oldUser,setID) VALUES (@dateDeploy,@oldUser,@setID)";
+                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
+                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
+                            cmdDeploy.Parameters.AddWithValue("@oldUser", oldUser);
+                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
+                            cmdDeploy.ExecuteNonQuery();
+                        }
+                        connection.Close();
+
+                        //tbl_pulloutDetails
+                        connection.Open();
+                        for (int row6 = 2; row6 <= range6.Rows.Count; row6++)
+                        {
+                            string dateDeploy = ((Range)range6.Cells[row6, 2]).Value?.ToString() ?? "";
+                            string userID = ((Range)range6.Cells[row6, 3]).Value?.ToString() ?? "";
+                            int setID = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+
+                            string qryDeploy = "INSERT INTO tbl_pulloutDetails (datePullout,userID) VALUES (@dateDeploy,@setID)";
+                            SqlCommand cmdDeploy = new SqlCommand(qryDeploy, connection);
+                            cmdDeploy.Parameters.AddWithValue("@dateDeploy", dateDeploy);
+                            cmdDeploy.Parameters.AddWithValue("@setID", setID);
+                            cmdDeploy.ExecuteNonQuery();
+                        }
+                        connection.Close();
+
+
+                       
 
                         //tbl_status
                         string globalstatus = null;
@@ -655,11 +655,11 @@ namespace InventorySystem
                     cmdassets.ExecuteNonQuery();
                     con.Close();
 
-                    //tbl_deployDetails
-                    con.Open();
-                    SqlCommand cmddeployDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_deployDetails'", con);
-                    cmddeployDetails.ExecuteNonQuery();
-                    con.Close();
+                    ////tbl_deployDetails
+                    //con.Open();
+                    //SqlCommand cmddeployDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_deployDetails'", con);
+                    //cmddeployDetails.ExecuteNonQuery();
+                    //con.Close();
 
                     //tbl_archive
                     con.Open();
@@ -686,9 +686,26 @@ namespace InventorySystem
                     con.Close();
 
                     //tbl_users
+                    //con.Open();
+                    //SqlCommand cmdusers = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_users'", con);
+                    //cmdusers.ExecuteNonQuery();
+
+
                     con.Open();
-                    SqlCommand cmdusers = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_users'", con);
+
+                    // Disable foreign key constraints for tbl_users
+                    SqlCommand disableFKUsers = new SqlCommand("ALTER TABLE tbl_users NOCHECK CONSTRAINT ALL", con);
+                    disableFKUsers.ExecuteNonQuery();
+
+                    // Delete data from tbl_users
+                    SqlCommand cmdusers = new SqlCommand("DELETE FROM tbl_users", con);
                     cmdusers.ExecuteNonQuery();
+
+                    // Enable foreign key constraints for tbl_users
+                    SqlCommand enableFKUsers = new SqlCommand("ALTER TABLE tbl_users WITH CHECK CHECK CONSTRAINT ALL", con);
+                    enableFKUsers.ExecuteNonQuery();
+
+                    con.Close();
 
                     MessageBox.Show("Database cleared successfully!");
                 }

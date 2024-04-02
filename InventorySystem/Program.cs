@@ -16,7 +16,7 @@ namespace InventorySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new dashboardMain());
+            Application.Run(new loginForm());
         }
     }
 }
