@@ -1717,10 +1717,10 @@ namespace InventorySystem
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(71)))), ((int)(((byte)(124)))));
             this.ClientSize = new System.Drawing.Size(1350, 690);
             this.Controls.Add(this.p1);
-            this.Controls.Add(this.gbInventory);
             this.Controls.Add(this.gbDashboard);
             this.Controls.Add(this.tabPullout);
             this.Controls.Add(this.tabViewDeployment);
+            this.Controls.Add(this.gbInventory);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
