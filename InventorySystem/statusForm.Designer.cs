@@ -39,16 +39,16 @@ namespace InventorySystem
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dbset46 = new InventorySystem.dbset46();
-            this.tblstatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_statusTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_statusTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblstatusBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbset46 = new InventorySystem.dbset46();
+            this.tbl_statusTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_statusTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblstatusBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
             this.SuspendLayout();
             // 
             // txtStatusName
@@ -135,22 +135,9 @@ namespace InventorySystem
             this.dataGridView1.DataSource = this.tblstatusBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 307);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(336, 190);
             this.dataGridView1.TabIndex = 29;
-            // 
-            // dbset46
-            // 
-            this.dbset46.DataSetName = "dbset46";
-            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblstatusBindingSource
-            // 
-            this.tblstatusBindingSource.DataMember = "tbl_status";
-            this.tblstatusBindingSource.DataSource = this.dbset46;
-            // 
-            // tbl_statusTableAdapter
-            // 
-            this.tbl_statusTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -164,12 +151,28 @@ namespace InventorySystem
             this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
             this.statusDataGridViewTextBoxColumn.HeaderText = "status";
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // statusNameDataGridViewTextBoxColumn
             // 
             this.statusNameDataGridViewTextBoxColumn.DataPropertyName = "statusName";
             this.statusNameDataGridViewTextBoxColumn.HeaderText = "statusName";
             this.statusNameDataGridViewTextBoxColumn.Name = "statusNameDataGridViewTextBoxColumn";
+            this.statusNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tblstatusBindingSource
+            // 
+            this.tblstatusBindingSource.DataMember = "tbl_status";
+            this.tblstatusBindingSource.DataSource = this.dbset46;
+            // 
+            // dbset46
+            // 
+            this.dbset46.DataSetName = "dbset46";
+            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tbl_statusTableAdapter
+            // 
+            this.tbl_statusTableAdapter.ClearBeforeFill = true;
             // 
             // statusForm
             // 
@@ -190,8 +193,8 @@ namespace InventorySystem
             this.Load += new System.EventHandler(this.statusForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblstatusBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

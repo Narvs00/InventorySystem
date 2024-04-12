@@ -36,16 +36,16 @@ namespace InventorySystem
             this.txtNewCat = new System.Windows.Forms.TextBox();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dbset46 = new InventorySystem.dbset46();
-            this.tblcategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_categoryTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_categoryTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblcategoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dbset46 = new InventorySystem.dbset46();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tbl_categoryTableAdapter = new InventorySystem.dbset46TableAdapters.tbl_categoryTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblcategoryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -96,33 +96,9 @@ namespace InventorySystem
             this.dataGridView1.DataSource = this.tblcategoryBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 270);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(252, 223);
             this.dataGridView1.TabIndex = 30;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(281, 312);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(67, 33);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // dbset46
-            // 
-            this.dbset46.DataSetName = "dbset46";
-            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblcategoryBindingSource
-            // 
-            this.tblcategoryBindingSource.DataMember = "tbl_category";
-            this.tblcategoryBindingSource.DataSource = this.dbset46;
-            // 
-            // tbl_categoryTableAdapter
-            // 
-            this.tbl_categoryTableAdapter.ClearBeforeFill = true;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -136,6 +112,32 @@ namespace InventorySystem
             this.categoryDataGridViewTextBoxColumn.DataPropertyName = "category";
             this.categoryDataGridViewTextBoxColumn.HeaderText = "category";
             this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tblcategoryBindingSource
+            // 
+            this.tblcategoryBindingSource.DataMember = "tbl_category";
+            this.tblcategoryBindingSource.DataSource = this.dbset46;
+            // 
+            // dbset46
+            // 
+            this.dbset46.DataSetName = "dbset46";
+            this.dbset46.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(281, 312);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(67, 33);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Remove";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // tbl_categoryTableAdapter
+            // 
+            this.tbl_categoryTableAdapter.ClearBeforeFill = true;
             // 
             // newCat
             // 
@@ -154,8 +156,8 @@ namespace InventorySystem
             this.Load += new System.EventHandler(this.newCat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblcategoryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset46)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

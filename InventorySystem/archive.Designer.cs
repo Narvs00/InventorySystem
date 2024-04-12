@@ -34,10 +34,6 @@ namespace InventorySystem
             this.tblarchiveBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnRestore = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tblarchiveBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dbset42 = new InventorySystem.dbset42();
-            this.tblarchiveBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.tbl_archiveTableAdapter = new InventorySystem.dbset42TableAdapters.tbl_archiveTableAdapter();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,11 +43,15 @@ namespace InventorySystem
             this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tblarchiveBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.dbset42 = new InventorySystem.dbset42();
+            this.tblarchiveBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.tbl_archiveTableAdapter = new InventorySystem.dbset42TableAdapters.tbl_archiveTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset42)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset42)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tblarchiveBindingSource
@@ -86,26 +86,9 @@ namespace InventorySystem
             this.dataGridView1.DataSource = this.tblarchiveBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(958, 358);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // tblarchiveBindingSource1
-            // 
-            this.tblarchiveBindingSource1.DataMember = "tbl_archive";
-            // 
-            // dbset42
-            // 
-            this.dbset42.DataSetName = "dbset42";
-            this.dbset42.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tblarchiveBindingSource2
-            // 
-            this.tblarchiveBindingSource2.DataMember = "tbl_archive";
-            this.tblarchiveBindingSource2.DataSource = this.dbset42;
-            // 
-            // tbl_archiveTableAdapter
-            // 
-            this.tbl_archiveTableAdapter.ClearBeforeFill = true;
             // 
             // dataGridViewTextBoxColumn10
             // 
@@ -119,48 +102,74 @@ namespace InventorySystem
             this.dataGridViewTextBoxColumn11.DataPropertyName = "setID";
             this.dataGridViewTextBoxColumn11.HeaderText = "AssetID";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn12
             // 
             this.dataGridViewTextBoxColumn12.DataPropertyName = "dateDelete";
             this.dataGridViewTextBoxColumn12.HeaderText = "Date Deleted";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn13
             // 
             this.dataGridViewTextBoxColumn13.DataPropertyName = "category";
             this.dataGridViewTextBoxColumn13.HeaderText = "Category";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn14
             // 
             this.dataGridViewTextBoxColumn14.DataPropertyName = "brand";
             this.dataGridViewTextBoxColumn14.HeaderText = "Brand";
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn15
             // 
             this.dataGridViewTextBoxColumn15.DataPropertyName = "specs";
             this.dataGridViewTextBoxColumn15.HeaderText = "Specs";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn16
             // 
             this.dataGridViewTextBoxColumn16.DataPropertyName = "serial";
             this.dataGridViewTextBoxColumn16.HeaderText = "Serial";
             this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn17
             // 
             this.dataGridViewTextBoxColumn17.DataPropertyName = "status";
             this.dataGridViewTextBoxColumn17.HeaderText = "Status";
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn18
             // 
             this.dataGridViewTextBoxColumn18.DataPropertyName = "remarks";
             this.dataGridViewTextBoxColumn18.HeaderText = "Remarks";
             this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            // 
+            // tblarchiveBindingSource2
+            // 
+            this.tblarchiveBindingSource2.DataMember = "tbl_archive";
+            this.tblarchiveBindingSource2.DataSource = this.dbset42;
+            // 
+            // dbset42
+            // 
+            this.dbset42.DataSetName = "dbset42";
+            this.dbset42.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tblarchiveBindingSource1
+            // 
+            this.tblarchiveBindingSource1.DataMember = "tbl_archive";
+            // 
+            // tbl_archiveTableAdapter
+            // 
+            this.tbl_archiveTableAdapter.ClearBeforeFill = true;
             // 
             // archive
             // 
@@ -176,9 +185,9 @@ namespace InventorySystem
             this.Load += new System.EventHandler(this.archive_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dbset42)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dbset42)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tblarchiveBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
