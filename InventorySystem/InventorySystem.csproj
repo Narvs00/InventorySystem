@@ -7,7 +7,7 @@
     <ProjectGuid>{17E44281-BEC1-4E72-BE17-BBF2FE3521C3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>InventorySystem</RootNamespace>
-    <AssemblyName>InventorySystem</AssemblyName>
+    <AssemblyName>CVM Inventory System</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
