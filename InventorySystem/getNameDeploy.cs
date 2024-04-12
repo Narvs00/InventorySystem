@@ -8,14 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace InventorySystem
 {
     public partial class getNameDeploy : Form
     {
 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
-
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
         public getNameDeploy()
         {
             InitializeComponent();
@@ -41,7 +42,12 @@ namespace InventorySystem
                 }
                 }
             }
+
+        private void getNameDeploy_Load(object sender, EventArgs e)
+        {
+
         }
+    }
     }
 
         

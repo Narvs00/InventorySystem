@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 
@@ -15,7 +16,8 @@ namespace InventorySystem
 {
     public partial class totalPullouts : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public totalPullouts()
         {
@@ -24,16 +26,19 @@ namespace InventorySystem
 
         private void totalPullouts_Load(object sender, EventArgs e)
         {
-            con.Open();
-            string qry = "SELECT id,category,brand,specs,serial,remarks,datePullout,oldUser from vGrid_finalPullOut where action = 2";
-            SqlCommand cmdView = new SqlCommand(qry, con);
-            cmdView.CommandText = qry;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string qry = "SELECT id,category,brand,specs,serial,remarks,datePullout,oldUser from vGrid_finalPullOut where action = 2";
+                SqlCommand cmdView = new SqlCommand(qry, con);
+                cmdView.CommandText = qry;
 
-            SqlDataAdapter daView = new SqlDataAdapter(cmdView);
-            DataTable dtView = new DataTable();
-            daView.Fill(dtView);
-            dataGridView1.DataSource = dtView;
-            con.Close();
+                SqlDataAdapter daView = new SqlDataAdapter(cmdView);
+                DataTable dtView = new DataTable();
+                daView.Fill(dtView);
+                dataGridView1.DataSource = dtView;
+                con.Close();
+            }
         }
     }
 }

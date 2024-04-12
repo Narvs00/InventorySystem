@@ -15,6 +15,7 @@ using OfficeOpenXml;
 using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 namespace InventorySystem
 {
@@ -23,7 +24,9 @@ namespace InventorySystem
     {
 
 
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public backupForm()
         {
@@ -33,16 +36,19 @@ namespace InventorySystem
 
         private void backupForm_Load(object sender, EventArgs e)
         {
-            con.Open();
-            string qryView = "SELECT * from tbl_assets";
-            SqlCommand cmdView = new SqlCommand(qryView, con);
-            cmdView.CommandText = qryView;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string qryView = "SELECT * from tbl_assets";
+                SqlCommand cmdView = new SqlCommand(qryView, con);
+                cmdView.CommandText = qryView;
 
-            SqlDataAdapter daView = new SqlDataAdapter(cmdView);
-            System.Data.DataTable dtView = new System.Data.DataTable();
-            daView.Fill(dtView);
-            dataGridView1.DataSource = dtView;
-            con.Close();
+                SqlDataAdapter daView = new SqlDataAdapter(cmdView);
+                System.Data.DataTable dtView = new System.Data.DataTable();
+                daView.Fill(dtView);
+                dataGridView1.DataSource = dtView;
+                con.Close();
+            }
         }
         //IMPORT BUTTON
         private void btnBackup_Click(object sender, EventArgs e)
@@ -193,11 +199,13 @@ namespace InventorySystem
 
                             if (existingCountstatus.HasRows)
                             {
-                                con.Close();
-                                //tbl_assets
-                                // Loop through Excel data and insert into SQL Server
-                               
-                                    
+                                using (SqlConnection con = new SqlConnection(connectionString))
+                                {
+                                    con.Close();
+                                    //tbl_assets
+                                    // Loop through Excel data and insert into SQL Server
+
+
                                     con.Open();
                                     string qrygetstatusName = "SELECT id from tbl_status where status = @status";
                                     SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
@@ -206,88 +214,90 @@ namespace InventorySystem
                                     SqlDataReader checker = cmdstatusName.ExecuteReader();
 
                                     checker.Read();
-                                        
-                                            
-                                            //int globalstatusID = 1;
-                                            int statusID1 = (int)checker["id"];
-                                            checker.Close();
-                                            con.Close();
+
+
+                                    //int globalstatusID = 1;
+                                    int statusID1 = (int)checker["id"];
+                                    checker.Close();
+                                    con.Close();
 
                                     // Assuming the first column contains the data to be inserted
-                                            string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
-                                            string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
-                                            string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
-                                            string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
-                                            string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
-                                            string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
-                                            string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
+                                    string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
+                                    string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
+                                    string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
+                                    string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
+                                    string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
+                                    string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
+                                    string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
 
-                                            string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
-                                            int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
+                                    string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
+                                    int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
 
-                                            string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
-                                            int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+                                    string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
+                                    int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
 
-                                            string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
-                                            int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
+                                    string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
+                                    int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
 
-                                            string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
-                                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+                                    string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
+                                    int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
 
-                                            string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
+                                    string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
 
-                                            connection.Close();
-                                            connection.Open();
-                                            if (statusexcel != "" && cat != "") {
-                                    
-                                
-                                                if (deployID == "" && userID == "")
-                                                {
-                                                    // SQL Insert command
-                                                    string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                    string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
-                                                    SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
-                                                    commanddeploID.Parameters.AddWithValue("@cat", cat);
-                                                    commanddeploID.Parameters.AddWithValue("@brand", brand);
-                                                    commanddeploID.Parameters.AddWithValue("@specs", specs);
-                                                    commanddeploID.Parameters.AddWithValue("@serial", serial);
-                                                    commanddeploID.Parameters.AddWithValue("@status", statusexcel);
-                                                    commanddeploID.Parameters.AddWithValue("@remarks", remarks);
-                                                    commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
-                                                    commanddeploID.Parameters.AddWithValue("@action", action);
-                                                    commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
-                                                    commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
-                                                    commanddeploID.ExecuteNonQuery();
-                                                }
-                                                else
-                                                {
-                                                    // SQL Insert command
-                                                    string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
-                                                    string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
-                                                    SqlCommand command = new SqlCommand(insertCommand, connection);
-                                                    command.Parameters.AddWithValue("@cat", cat);
-                                                    command.Parameters.AddWithValue("@brand", brand);
-                                                    command.Parameters.AddWithValue("@specs", specs);
-                                                    command.Parameters.AddWithValue("@serial", serial);
-                                                    command.Parameters.AddWithValue("@status", status);
-                                                    command.Parameters.AddWithValue("@remarks", remarks);
-                                                    command.Parameters.AddWithValue("@date", dateTime);
-                                                    command.Parameters.AddWithValue("@action", action);
-                                                    command.Parameters.AddWithValue("@deployID", deployid);
-                                                    command.Parameters.AddWithValue("@userID", userid);
-                                                    command.Parameters.AddWithValue("@pullOutID", pulloutid);
-                                                    command.Parameters.AddWithValue("@oldUser", oldUser);
-                                                    command.Parameters.AddWithValue("@statusID", statusID1);
-                                                    command.ExecuteNonQuery();
+                                    connection.Close();
+                                    connection.Open();
+                                    if (statusexcel != "" && cat != "")
+                                    {
 
-                                                }
-                                            }
-                                            else
-                                            {
-                                                 MessageBox.Show("SULIT! No assets added");
-                                            }
-                                           
-                                            connection.Close();
+
+                                        if (deployID == "" && userID == "")
+                                        {
+                                            // SQL Insert command
+                                            string dateTimeDeployID = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                            string insertCommanddeploID = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@oldUser,@statusID)";
+                                            SqlCommand commanddeploID = new SqlCommand(insertCommanddeploID, connection);
+                                            commanddeploID.Parameters.AddWithValue("@cat", cat);
+                                            commanddeploID.Parameters.AddWithValue("@brand", brand);
+                                            commanddeploID.Parameters.AddWithValue("@specs", specs);
+                                            commanddeploID.Parameters.AddWithValue("@serial", serial);
+                                            commanddeploID.Parameters.AddWithValue("@status", statusexcel);
+                                            commanddeploID.Parameters.AddWithValue("@remarks", remarks);
+                                            commanddeploID.Parameters.AddWithValue("@date", dateTimeDeployID);
+                                            commanddeploID.Parameters.AddWithValue("@action", action);
+                                            commanddeploID.Parameters.AddWithValue("@oldUser", oldUser);
+                                            commanddeploID.Parameters.AddWithValue("@statusID", statusID1);
+                                            commanddeploID.ExecuteNonQuery();
+                                        }
+                                        else
+                                        {
+                                            // SQL Insert command
+                                            string dateTime = DateTime.Now.ToString("MM / dd / yyyy HH: mm");
+                                            string insertCommand = "INSERT INTO tbl_assets (category,brand,specs,serial,status,remarks,date,action,deployID,userID,pullOutID,oldUser,statusID) VALUES (@cat,@brand,@specs,@serial,@status,@remarks,@date,@action,@deployID,@userID,@pullOutID,@oldUser,@statusID)";
+                                            SqlCommand command = new SqlCommand(insertCommand, connection);
+                                            command.Parameters.AddWithValue("@cat", cat);
+                                            command.Parameters.AddWithValue("@brand", brand);
+                                            command.Parameters.AddWithValue("@specs", specs);
+                                            command.Parameters.AddWithValue("@serial", serial);
+                                            command.Parameters.AddWithValue("@status", status);
+                                            command.Parameters.AddWithValue("@remarks", remarks);
+                                            command.Parameters.AddWithValue("@date", dateTime);
+                                            command.Parameters.AddWithValue("@action", action);
+                                            command.Parameters.AddWithValue("@deployID", deployid);
+                                            command.Parameters.AddWithValue("@userID", userid);
+                                            command.Parameters.AddWithValue("@pullOutID", pulloutid);
+                                            command.Parameters.AddWithValue("@oldUser", oldUser);
+                                            command.Parameters.AddWithValue("@statusID", statusID1);
+                                            command.ExecuteNonQuery();
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("SULIT! No assets added");
+                                    }
+
+                                }
+                                connection.Close();
                             }
                             else
                             {
@@ -302,7 +312,8 @@ namespace InventorySystem
 
                                 //tbl_assets
                                 // Loop through Excel data and insert into SQL Server
-                                
+                                using (SqlConnection con = new SqlConnection(connectionString))
+                                {
                                     con.Open();
                                     string qrygetstatusName = "SELECT id from tbl_status where status = @status";
                                     SqlCommand cmdstatusName = new SqlCommand(qrygetstatusName, con);
@@ -310,45 +321,45 @@ namespace InventorySystem
 
                                     using (SqlDataReader checker = cmdstatusName.ExecuteReader())
                                     {
-                                    checker.Read();
-                                        
-                                            
-                                            //int globalstatusID = 1;
-                                            int statusID1 = (int)checker["id"];
-                                            checker.Close();
-                                            con.Close();
+                                        checker.Read();
 
-                                    // Assuming the first column contains the data to be inserted
-                                            string ID = ((Range)range.Cells[row7, 1]).Value?.ToString() ?? "";
-                                            int id = string.IsNullOrEmpty(ID) ? 0 : Convert.ToInt32(ID);
 
-                                            string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
-                                            string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
-                                            string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
-                                            string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
-                                            string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
-                                            string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
-                                            string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
+                                        //int globalstatusID = 1;
+                                        int statusID1 = (int)checker["id"];
+                                        checker.Close();
+                                        con.Close();
 
-                                            string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
-                                            int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
+                                        // Assuming the first column contains the data to be inserted
+                                        string ID = ((Range)range.Cells[row7, 1]).Value?.ToString() ?? "";
+                                        int id = string.IsNullOrEmpty(ID) ? 0 : Convert.ToInt32(ID);
 
-                                            string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
-                                            int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
+                                        string cat = ((Range)range.Cells[row7, 2]).Value?.ToString() ?? ""; // Using ?? to handle null and default to empty string
+                                        string brand = ((Range)range.Cells[row7, 3]).Value?.ToString() ?? "";
+                                        string specs = ((Range)range.Cells[row7, 4]).Value?.ToString() ?? "";
+                                        string serial = ((Range)range.Cells[row7, 5]).Value?.ToString() ?? "";
+                                        string statusexcel = ((Range)range.Cells[row7, 6]).Value?.ToString() ?? "";
+                                        string remarks = ((Range)range.Cells[row7, 7]).Value?.ToString() ?? "";
+                                        string action = ((Range)range.Cells[row7, 9]).Value?.ToString() ?? "";
 
-                                            string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
-                                            int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
+                                        string deployID = ((Range)range.Cells[row7, 10]).Value?.ToString() ?? "";
+                                        int deployid = string.IsNullOrEmpty(deployID) ? 0 : Convert.ToInt32(deployID);
 
-                                            string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
-                                            int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
+                                        string userID = ((Range)range.Cells[row7, 11]).Value?.ToString() ?? "";
+                                        int userid = string.IsNullOrEmpty(userID) ? 0 : Convert.ToInt32(userID);
 
-                                            string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
+                                        string pullOutID = ((Range)range.Cells[row7, 12]).Value?.ToString() ?? "";
+                                        int pulloutid = string.IsNullOrEmpty(pullOutID) ? 0 : Convert.ToInt32(pullOutID);
 
-                                            
-                                            connection.Close();
-                                            connection.Open();
+                                        string statusID = ((Range)range.Cells[row7, 14]).Value?.ToString() ?? "";
+                                        int statusid = string.IsNullOrEmpty(statusID) ? 0 : Convert.ToInt32(statusID);
 
-                                   
+                                        string oldUser = ((Range)range.Cells[row7, 13]).Value?.ToString() ?? "";
+
+
+                                        connection.Close();
+                                        connection.Open();
+
+
                                         if (deployID == "" && userID == "")
                                         {
                                             // SQL Insert command
@@ -388,7 +399,8 @@ namespace InventorySystem
                                             command.Parameters.AddWithValue("@statusID", statusID1);
                                             command.ExecuteNonQuery();
                                         }
-                                            connection.Close();
+                                        connection.Close();
+                                    }
                                 }
                             }
                             connection.Open();
@@ -529,199 +541,209 @@ namespace InventorySystem
         }
         void refresh()
         {
-            con.Close();
-            con.Open();
-            string qryView = "SELECT * from tbl_assets";
-            SqlCommand cmdView = new SqlCommand(qryView, con);
-            cmdView.CommandText = qryView;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Close();
+                con.Open();
+                string qryView = "SELECT * from tbl_assets";
+                SqlCommand cmdView = new SqlCommand(qryView, con);
+                cmdView.CommandText = qryView;
 
-            SqlDataAdapter daView = new SqlDataAdapter(cmdView);
-            System.Data.DataTable dtView = new System.Data.DataTable();
-            daView.Fill(dtView);
-            dataGridView1.DataSource = dtView;
-            con.Close();
+                SqlDataAdapter daView = new SqlDataAdapter(cmdView);
+                System.Data.DataTable dtView = new System.Data.DataTable();
+                daView.Fill(dtView);
+                dataGridView1.DataSource = dtView;
+                con.Close();
+            }
         }
 
         private void btnBackup_Click_1(object sender, EventArgs e)
         {
-            //backupAssets();
-            ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Or LicenseContext.Commercial if you have a commercial license
-            string connectionString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True";
-
-            // Tables to backup
-            string[] tables = {"tbl_assets", "tbl_deployDetails", "tbl_users", "tbl_archive", "tbl_category", "tbl_pulloutDetails", "tbl_status" }; // Add your table names here
-
-            // Create a new Excel file
-            // Export data to Excel
-            string timestamp = DateTime.Now.ToString("HHmmss"); // Generate a timestamp
-            string fileName = $"CVM_Backup_{timestamp}.xlsx";
-            string filePath = Path.Combine(@"C:\Users\USER\Downloads\", fileName);
-            ExcelPackage package = new ExcelPackage(filePath);
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                connection.Open();
-                foreach (string table in tables)
+                //backupAssets();
+                ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial; // Or LicenseContext.Commercial if you have a commercial license
+                string connectionString = @"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True";
+
+                // Tables to backup
+                string[] tables = { "tbl_assets", "tbl_deployDetails", "tbl_users", "tbl_archive", "tbl_category", "tbl_pulloutDetails", "tbl_status" }; // Add your table names here
+
+                // Create a new Excel file
+                // Export data to Excel
+                string timestamp = DateTime.Now.ToString("HHmmss"); // Generate a timestamp
+                string fileName = $"CVM_Backup_{timestamp}.xlsx";
+                string filePath = Path.Combine(@"C:\Users\USER\Downloads\", fileName);
+                ExcelPackage package = new ExcelPackage(filePath);
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    // Retrieve data from the table
-                    SqlCommand command = new SqlCommand($"SELECT * FROM {table}", connection);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    System.Data.DataTable dataTable = new System.Data.DataTable();
-                    adapter.Fill(dataTable);
-
-                    // Create a new sheet for the table
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(table);
-
-                    // Load data into the sheet
-                    worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
-
-                    // Format date and time columns
-                    for (int col = 1; col <= dataTable.Columns.Count; col++)
+                    connection.Open();
+                    foreach (string table in tables)
                     {
-                        DataColumn column = dataTable.Columns[col - 1];
-                        if (column.DataType == typeof(DateTime))
+                        // Retrieve data from the table
+                        SqlCommand command = new SqlCommand($"SELECT * FROM {table}", connection);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        System.Data.DataTable dataTable = new System.Data.DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Create a new sheet for the table
+                        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add(table);
+
+                        // Load data into the sheet
+                        worksheet.Cells["A1"].LoadFromDataTable(dataTable, true);
+
+                        // Format date and time columns
+                        for (int col = 1; col <= dataTable.Columns.Count; col++)
                         {
-                            // Set the date and time format for the column
-                            worksheet.Column(col).Style.Numberformat.Format = "yyyy-MM-dd HH:mm:ss";
+                            DataColumn column = dataTable.Columns[col - 1];
+                            if (column.DataType == typeof(DateTime))
+                            {
+                                // Set the date and time format for the column
+                                worksheet.Column(col).Style.Numberformat.Format = "yyyy-MM-dd HH:mm:ss";
+                            }
                         }
                     }
+                    connection.Close();
+
                 }
-                connection.Close();
-                
-            }
-            // Save the Excel file
-            package.Save();
+                // Save the Excel file
+                package.Save();
 
-            //foreach data from tbl_deployDetails get the ID
-            con.Open();
-            string query = "SELECT * FROM tbl_deployDetails";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlCommand command = new SqlCommand(query, con);
-
-                try
+                //foreach data from tbl_deployDetails get the ID
+                con.Open();
+                string query = "SELECT * FROM tbl_deployDetails";
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
+                    SqlCommand command = new SqlCommand(query, con);
 
-                    // Check if the reader has rows
-                    if (reader.HasRows)
+                    try
                     {
-                        // Read each row using a while loop
-                        while (reader.Read())
+                        SqlDataReader reader = command.ExecuteReader();
+
+                        // Check if the reader has rows
+                        if (reader.HasRows)
                         {
-                            // Assuming 'id' is one of the columns in your table
-                            int id = reader.GetInt32(reader.GetOrdinal("id"));
-
-                            using (SqlConnection updateConnection = new SqlConnection(connectionString))
+                            // Read each row using a while loop
+                            while (reader.Read())
                             {
-                                updateConnection.Open();
-                                string qryupdateID = "UPDATE tbl_deployDetails SET oldID = @oldID where id = @id";
-                                SqlCommand cmdupdateID = new SqlCommand(qryupdateID, updateConnection);
-                                cmdupdateID.Parameters.AddWithValue("@oldID", id);
-                                cmdupdateID.Parameters.AddWithValue("@id", id);
-                                cmdupdateID.ExecuteNonQuery();
-                                updateConnection.Close();
+                                // Assuming 'id' is one of the columns in your table
+                                int id = reader.GetInt32(reader.GetOrdinal("id"));
+
+                                using (SqlConnection updateConnection = new SqlConnection(connectionString))
+                                {
+                                    updateConnection.Open();
+                                    string qryupdateID = "UPDATE tbl_deployDetails SET oldID = @oldID where id = @id";
+                                    SqlCommand cmdupdateID = new SqlCommand(qryupdateID, updateConnection);
+                                    cmdupdateID.Parameters.AddWithValue("@oldID", id);
+                                    cmdupdateID.Parameters.AddWithValue("@id", id);
+                                    cmdupdateID.ExecuteNonQuery();
+                                    updateConnection.Close();
+                                }
                             }
-                        } 
+                        }
+                        else
+                        {
+                            MessageBox.Show("No rows found.");
+                        }
+
+                        // Close the reader
+                        reader.Close();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("No rows found.");
+                        Console.WriteLine("Error: " + ex.Message);
                     }
+                }
+                con.Close();
+                MessageBox.Show($"SULIT! Data exported to Excel successfully! \nLocation: {filePath}");
 
-                    // Close the reader
-                    reader.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
+
             }
-            con.Close();
-            MessageBox.Show($"SULIT! Data exported to Excel successfully! \nLocation: {filePath}");
-
         }
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are you sure, you want to Reset?", "Warning Message", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            using (SqlConnection con = new SqlConnection(connectionString))
             {
-                try
+                DialogResult dialogResult = MessageBox.Show("Are you sure, you want to Reset?", "Warning Message", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    //tbl_assets
-                    con.Open();
-                    SqlCommand cmdassets = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_assets'", con);
-                    cmdassets.ExecuteNonQuery();
-                    con.Close();
+                    try
+                    {
+                        //tbl_assets
+                        con.Open();
+                        SqlCommand cmdassets = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_assets'", con);
+                        cmdassets.ExecuteNonQuery();
+                        con.Close();
 
-                    ////tbl_deployDetails
-                    //con.Open();
-                    //SqlCommand cmddeployDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_deployDetails'", con);
-                    //cmddeployDetails.ExecuteNonQuery();
-                    //con.Close();
+                        ////tbl_deployDetails
+                        //con.Open();
+                        //SqlCommand cmddeployDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_deployDetails'", con);
+                        //cmddeployDetails.ExecuteNonQuery();
+                        //con.Close();
 
-                    //tbl_archive
-                    con.Open();
-                    SqlCommand cmdarchive = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_archive'", con);
-                    cmdarchive.ExecuteNonQuery();
-                    con.Close();
+                        //tbl_archive
+                        con.Open();
+                        SqlCommand cmdarchive = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_archive'", con);
+                        cmdarchive.ExecuteNonQuery();
+                        con.Close();
 
-                    //tbl_category
-                    con.Open();
-                    SqlCommand cmdcategory = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_category'", con);
-                    cmdcategory.ExecuteNonQuery();
-                    con.Close();
+                        //tbl_category
+                        con.Open();
+                        SqlCommand cmdcategory = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_category'", con);
+                        cmdcategory.ExecuteNonQuery();
+                        con.Close();
 
-                    //tbl_pulloutDetails
-                    con.Open();
-                    SqlCommand cmdpulloutDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_pulloutDetails'", con);
-                    cmdpulloutDetails.ExecuteNonQuery();
-                    con.Close();
+                        //tbl_pulloutDetails
+                        con.Open();
+                        SqlCommand cmdpulloutDetails = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_pulloutDetails'", con);
+                        cmdpulloutDetails.ExecuteNonQuery();
+                        con.Close();
 
-                    //tbl_status
-                    con.Open();
-                    SqlCommand cmdstatus = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_status'", con);
-                    cmdstatus.ExecuteNonQuery();
-                    con.Close();
+                        //tbl_status
+                        con.Open();
+                        SqlCommand cmdstatus = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_status'", con);
+                        cmdstatus.ExecuteNonQuery();
+                        con.Close();
 
-                    //tbl_users
-                    //con.Open();
-                    //SqlCommand cmdusers = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_users'", con);
-                    //cmdusers.ExecuteNonQuery();
+                        //tbl_users
+                        //con.Open();
+                        //SqlCommand cmdusers = new SqlCommand("EXEC sp_MSforeachtable 'DELETE FROM tbl_users'", con);
+                        //cmdusers.ExecuteNonQuery();
 
 
-                    con.Open();
+                        con.Open();
 
-                    // Disable foreign key constraints for tbl_users
-                    SqlCommand disableFKUsers = new SqlCommand("ALTER TABLE tbl_users NOCHECK CONSTRAINT ALL", con);
-                    disableFKUsers.ExecuteNonQuery();
+                        // Disable foreign key constraints for tbl_users
+                        SqlCommand disableFKUsers = new SqlCommand("ALTER TABLE tbl_users NOCHECK CONSTRAINT ALL", con);
+                        disableFKUsers.ExecuteNonQuery();
 
-                    // Delete data from tbl_users
-                    SqlCommand cmdusers = new SqlCommand("DELETE FROM tbl_users", con);
-                    cmdusers.ExecuteNonQuery();
+                        // Delete data from tbl_users
+                        SqlCommand cmdusers = new SqlCommand("DELETE FROM tbl_users", con);
+                        cmdusers.ExecuteNonQuery();
 
-                    // Enable foreign key constraints for tbl_users
-                    SqlCommand enableFKUsers = new SqlCommand("ALTER TABLE tbl_users WITH CHECK CHECK CONSTRAINT ALL", con);
-                    enableFKUsers.ExecuteNonQuery();
+                        // Enable foreign key constraints for tbl_users
+                        SqlCommand enableFKUsers = new SqlCommand("ALTER TABLE tbl_users WITH CHECK CHECK CONSTRAINT ALL", con);
+                        enableFKUsers.ExecuteNonQuery();
 
-                    con.Close();
+                        con.Close();
 
-                    MessageBox.Show("Database cleared successfully!");
+                        MessageBox.Show("Database cleared successfully!");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
                 }
-                catch (Exception ex)
+                else if (dialogResult == DialogResult.No)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-                finally
-                {
-                    con.Close();
-                }
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
+                    //do something else
 
+                }
             }
         }
     }

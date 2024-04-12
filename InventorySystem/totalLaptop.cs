@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 
 
@@ -15,7 +16,8 @@ namespace InventorySystem
 {
     public partial class totalLaptop : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        //SqlConnection con = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb;Initial Catalog=tryDB;Integrated Security=True");
+        string connectionString = ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString;
 
         public totalLaptop()
         {
@@ -24,16 +26,19 @@ namespace InventorySystem
 
         private void totalLaptop_Load(object sender, EventArgs e)
         {
-            con.Open();
-            string qryView = "SELECT id,category,brand,specs,serial,remarks,status from tbl_assets where category = 'Laptop'";
-            SqlCommand cmdView = new SqlCommand(qryView, con);
-            cmdView.CommandText = qryView;
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string qryView = "SELECT id,category,brand,specs,serial,remarks,status from tbl_assets where category = 'Laptop'";
+                SqlCommand cmdView = new SqlCommand(qryView, con);
+                cmdView.CommandText = qryView;
 
-            SqlDataAdapter daView = new SqlDataAdapter(cmdView);
-            DataTable dtView = new DataTable();
-            daView.Fill(dtView);
-            dataGridView1.DataSource = dtView;
-            con.Close();
+                SqlDataAdapter daView = new SqlDataAdapter(cmdView);
+                DataTable dtView = new DataTable();
+                daView.Fill(dtView);
+                dataGridView1.DataSource = dtView;
+                con.Close();
+            }
         }
     }
 }

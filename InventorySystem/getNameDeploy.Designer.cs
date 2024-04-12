@@ -87,6 +87,7 @@ namespace InventorySystem
             this.Name = "getNameDeploy";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Deployment";
+            this.Load += new System.EventHandler(this.getNameDeploy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

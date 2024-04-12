@@ -378,6 +378,7 @@
     <EmbeddedResource Include="workingAssets.resx">
       <DependentUpon>workingAssets.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App1.config" />
     <None Include="dbset41.xsc">
       <DependentUpon>dbset41.xsd</DependentUpon>
     </None>
